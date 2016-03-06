@@ -1,16 +1,10 @@
 package main
 
 var (
-	xmlTest2 = `
-<person xmlns="ns1" xmlns:ns2="ns2">
-  <name>Oliver</name>
-  <ns2:phone>110</ns2:phone>
-</person>
-	`
-
-	xmlTest = `
+	xmlTicariFatura = `
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="general.xslt"?>
+
 <Invoice 
 xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
