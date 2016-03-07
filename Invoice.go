@@ -1,57 +1,92 @@
 package main
 
+//
 import (
 	"encoding/xml"
 	"time"
 )
 
-type customDate struct {
+type IssueDateType struct {
+	DateType
+}
+
+type DateType struct {
 	time.Time
 }
 
-type customTime struct {
+type TimeType struct {
 	time.Time
 }
+type IssueTimeType struct {
+	TimeType
+}
 
-func (c *customDate) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	const shortForm = "2006-01-02" // yyyymmdd date format
+func (c *DateType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	const shortForm = "2006-01-02" // yyyy-mm-dd date format
 	var v string
 	d.DecodeElement(&v, &start)
 	parse, err := time.Parse(shortForm, v)
 	if err != nil {
 		return err
 	}
-	*c = customDate{parse}
+	*c = DateType{parse}
 	return nil
 }
 
-func (c *customTime) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	const shortForm = "15:04:05" // yyyymmdd date format
+func (c *TimeType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+	const shortForm = "15:04:05" // hh-MM-ss time format
 	var v string
 	d.DecodeElement(&v, &start)
 	parse, err := time.Parse(shortForm, v)
 	if err != nil {
 		return err
 	}
-	*c = customTime{parse}
+	*c = TimeType{parse}
 	return nil
 }
 
 type Invoice struct {
-	XMLName         xml.Name `xml:"Invoice"`
-	UBLVersionID    string
-	CustomizationID string
+	XMLName xml.Name `xml:"Invoice"`
+	//private UBLExtensionType[] uBLExtensionsField;
+	UBLVersionID    UBLVersionIDType
+	CustomizationID CustomizationIDType
 
-	ProfileID            string
-	ID                   IdType
-	CopyIndicator        string
-	UUID                 string
-	IssueDate            customDate
-	IssueTime            customTime
-	InvoiceTypeCode      string
+	ProfileID       ProfileIDType
+	ID              IDType
+	CopyIndicator   CopyIndicatorType
+	UUID            UUIDType
+	IssueDate       IssueDateType
+	IssueTime       IssueTimeType
+	InvoiceTypeCode string
+	//private NoteType[] noteField;
 	DocumentCurrencyCode string
-	LineCountNumeric     int
-	Signature            SignatureType
+	//private TaxCurrencyCodeType taxCurrencyCodeField;
+	//private PricingCurrencyCodeType pricingCurrencyCodeField;
+	//private PaymentCurrencyCodeType paymentCurrencyCodeField;
+	//private PaymentAlternativeCurrencyCodeType paymentAlternativeCurrencyCodeField;
+	//private AccountingCostType accountingCostField;
+
+	LineCountNumeric        int
+	Signature               []SignatureType   `xml:",omitempty"`
+	AccountingSupplierParty SupplierPartyType `xml:",omitempty"`
+
+	AccountingCustomerParty CustomerPartyType `xml:",omitempty"`
+	BuyerCustomerParty      CustomerPartyType `xml:",omitempty"`
+	SellerSupplierParty     SupplierPartyType `xml:",omitempty"`
+	TaxRepresentativeParty  PartyType         `xml:",omitempty"`
+	//delivery  DeliveryType[]
+	//paymentMeans PaymentMeansType[]
+	//paymentTerms PaymentTermsType
+	//allowanceCharge AllowanceChargeType[]
+	//taxExchangeRate ExchangeRateType
+	//pricingExchangeRate ExchangeRateType
+	//paymentExchangeRate ExchangeRateType
+	//paymentAlternativeExchangeRate ExchangeRateType
+	//taxTotal TaxTotalType[]
+	//withholdingTaxTotal TaxTotalType[]
+	//legalMonetaryTotal MonetaryTotalType
+	//invoiceLine InvoiceLineType[]
+
 }
 
 type IdentifierType struct {
@@ -66,15 +101,15 @@ type IdentifierType struct {
 }
 
 type SignatureType struct {
-	ID IdType
+	ID IDType
 
-	SignatoryParty PartyType
+	SignatoryParty PartyType `xml:",omitempty"`
 
 	//private AttachmentType digitalSignatureAttachmentField;
 }
 
 type PartyType struct {
-	WebsiteURI string
+	WebsiteURI string `xml:",omitempty"`
 
 	//private EndpointIDType endpointIDField;
 	//private IndustryClassificationCodeType industryClassificationCodeField;
@@ -89,10 +124,39 @@ type PartyType struct {
 
 }
 
+type SupplierPartyType struct {
+	Party PartyType `xml:",omitempty"`
+}
+type CustomerPartyType struct {
+	Party PartyType `xml:",omitempty"`
+}
+
 type IdentifierType1 struct {
 	IdentifierType
 }
 
-type IdType struct {
+type UBLVersionIDType struct {
 	IdentifierType1
+}
+type CustomizationIDType struct {
+	IdentifierType1
+}
+
+type ProfileIDType struct {
+	IdentifierType1
+}
+
+type IDType struct {
+	IdentifierType1
+}
+type UUIDType struct {
+	IdentifierType1
+}
+
+type CopyIndicatorType struct {
+	IndicatorType
+}
+
+type IndicatorType struct {
+	Value bool `xml:",chardata"`
 }
