@@ -48,25 +48,25 @@ func (c *TimeType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 type Invoice struct {
 	XMLName xml.Name `xml:"Invoice"`
 	//private UBLExtensionType[] uBLExtensionsField;
-	UBLVersionID    UBLVersionIDType
-	CustomizationID CustomizationIDType
+	UBLVersionID    IdentifierType
+	CustomizationID IdentifierType
 
-	ProfileID       ProfileIDType
-	ID              IDType
-	CopyIndicator   CopyIndicatorType
-	UUID            UUIDType
-	IssueDate       IssueDateType
-	IssueTime       IssueTimeType
-	InvoiceTypeCode string
-	//private NoteType[] noteField;
-	DocumentCurrencyCode string
+	ProfileID            IdentifierType
+	ID                   IdentifierType
+	CopyIndicator        CopyIndicatorType
+	UUID                 IdentifierType
+	IssueDate            IssueDateType
+	IssueTime            IssueTimeType
+	InvoiceTypeCode      CodeType
+	Note                 []TextType
+	DocumentCurrencyCode CodeType
 	//private TaxCurrencyCodeType taxCurrencyCodeField;
 	//private PricingCurrencyCodeType pricingCurrencyCodeField;
 	//private PaymentCurrencyCodeType paymentCurrencyCodeField;
 	//private PaymentAlternativeCurrencyCodeType paymentAlternativeCurrencyCodeField;
 	//private AccountingCostType accountingCostField;
 
-	LineCountNumeric        int
+	LineCountNumeric        NumericType
 	Signature               []SignatureType   `xml:",omitempty"`
 	AccountingSupplierParty SupplierPartyType `xml:",omitempty"`
 
@@ -101,11 +101,30 @@ type IdentifierType struct {
 }
 
 type SignatureType struct {
-	ID IDType
+	ID IdentifierType
 
 	SignatoryParty PartyType `xml:",omitempty"`
 
-	//private AttachmentType digitalSignatureAttachmentField;
+	DigitalSignatureAttachment AttachmentType
+}
+
+type AttachmentType struct {
+	EmbeddedDocumentBinaryObject BinaryObjectType
+	ExternalReference            ExternalReferenceType
+}
+
+type ExternalReferenceType struct {
+	URI IdentifierType
+}
+
+type BinaryObjectType struct {
+	Format           string `xml:"format,attr,omitempty"`
+	MimeCode         string `xml:"mimeCode,attr,omitempty"`
+	EncodingCode     string `xml:"encodingCode,attr,omitempty"`
+	CharacterSetCode string `xml:"characterSetCode,attr,omitempty"`
+	Uri              string `xml:"uri,attr,omitempty"`
+	Filename         string `xml:"filename,attr,omitempty"`
+	Value            []byte `xml:",chardata"`
 }
 
 type PartyType struct {
@@ -113,15 +132,45 @@ type PartyType struct {
 
 	//private EndpointIDType endpointIDField;
 	//private IndustryClassificationCodeType industryClassificationCodeField;
-	//PartyIdentification []PartyIdentificationType
+	PartyIdentification []PartyIdentificationType
+
 	//private PartyNameType partyNameField;
-	//private AddressType postalAddressField;
+
+	PostalAddress AddressType
+
 	//private PartyTaxSchemeType partyTaxSchemeField;
 	//private PartyLegalEntityType[] partyLegalEntityField;
 	//private ContactType contactField;
 	//private PersonType personField;
 	//private PartyType agentPartyField;
 
+}
+
+type AddressType struct {
+	ID IdentifierType
+
+	//PostboxType postboxField;
+	//RoomType roomField;
+	StreetName          TextType
+	BlockName           TextType
+	BuildingName        TextType
+	BuildingNumber      TextType
+	CitySubdivisionName TextType
+	CityName            TextType
+	PostalZone          TextType
+	RegionType          TextType
+	District            TextType
+	Country             CountryType
+}
+
+type CountryType struct {
+	IdentificationCode CodeType
+
+	Name TextType
+}
+
+type PartyIdentificationType struct {
+	ID IdentifierType
 }
 
 type SupplierPartyType struct {
@@ -131,32 +180,34 @@ type CustomerPartyType struct {
 	Party PartyType `xml:",omitempty"`
 }
 
-type IdentifierType1 struct {
-	IdentifierType
-}
-
-type UBLVersionIDType struct {
-	IdentifierType1
-}
-type CustomizationIDType struct {
-	IdentifierType1
-}
-
-type ProfileIDType struct {
-	IdentifierType1
-}
-
-type IDType struct {
-	IdentifierType1
-}
-type UUIDType struct {
-	IdentifierType1
-}
-
 type CopyIndicatorType struct {
 	IndicatorType
 }
 
 type IndicatorType struct {
 	Value bool `xml:",chardata"`
+}
+
+type CodeType struct {
+	ListID         string `xml:"listID,attr,omitempty"`
+	ListAgencyID   string `xml:"listAgencyID,attr,omitempty"`
+	ListAgencyName string `xml:"listAgencyName,attr,omitempty"`
+	ListName       string `xml:"listName,attr,omitempty"`
+	ListVersionID  string `xml:"listVersionID,attr,omitempty"`
+	Name           string `xml:"name,attr,omitempty"`
+	LanguageID     string `xml:"languageID,attr,omitempty"`
+	ListURI        string `xml:"listURI,attr,omitempty"`
+	ListSchemeURI  string `xml:"listSchemeURI,attr,omitempty"`
+	Value          string `xml:",chardata"`
+}
+
+type TextType struct {
+	LanguageID       string `xml:"languageID,attr,omitempty"`
+	LanguageLocaleID string `xml:"languageLocaleID,attr,omitempty"`
+	Value            string `xml:",chardata"`
+}
+
+type NumericType struct {
+	Format string  `xml:"Format,attr,omitempty"`
+	Value  float64 `xml:",chardata"`
 }

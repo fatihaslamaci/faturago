@@ -31,6 +31,8 @@ xmlns:n4="http://www.altova.com/samplexml/other-namespace" >
 	<cbc:IssueDate>2009-01-05</cbc:IssueDate>
 	<cbc:IssueTime>14:42:00</cbc:IssueTime>
 	<cbc:InvoiceTypeCode>SATIS</cbc:InvoiceTypeCode>
+	<cbc:Note>Acıklama Satırı Girdim</cbc:Note>
+	<cbc:Note>ikinci bir Açıklama Satırı Girdim</cbc:Note>
 	<cbc:DocumentCurrencyCode>TRY</cbc:DocumentCurrencyCode>
 	<cbc:LineCountNumeric>8</cbc:LineCountNumeric>
 	<cac:DespatchDocumentReference>
