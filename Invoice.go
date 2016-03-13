@@ -47,10 +47,9 @@ func (c *TimeType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 
 type Invoice struct {
 	XMLName xml.Name `xml:"Invoice"`
-	//private UBLExtensionType[] uBLExtensionsField;
-	UBLVersionID    IdentifierType
-	CustomizationID IdentifierType
-
+	//	UBLExtensionType[] uBLExtensionsField;
+	UBLVersionID         IdentifierType
+	CustomizationID      IdentifierType
 	ProfileID            IdentifierType
 	ID                   IdentifierType
 	CopyIndicator        CopyIndicatorType
@@ -60,32 +59,38 @@ type Invoice struct {
 	InvoiceTypeCode      CodeType
 	Note                 []TextType
 	DocumentCurrencyCode CodeType
-	//private TaxCurrencyCodeType taxCurrencyCodeField;
-	//private PricingCurrencyCodeType pricingCurrencyCodeField;
-	//private PaymentCurrencyCodeType paymentCurrencyCodeField;
-	//private PaymentAlternativeCurrencyCodeType paymentAlternativeCurrencyCodeField;
-	//private AccountingCostType accountingCostField;
-
-	LineCountNumeric        NumericType
+	//    TaxCurrencyCodeType taxCurrencyCodeField;
+	//    PricingCurrencyCodeType pricingCurrencyCodeField;
+	//    PaymentCurrencyCodeType paymentCurrencyCodeField;
+	//    PaymentAlternativeCurrencyCodeType paymentAlternativeCurrencyCodeField;
+	//    AccountingCostType accountingCostField;
+	LineCountNumeric NumericType
+	//    PeriodType invoicePeriodField;
+	//    OrderReferenceType orderReferenceField;
+	//    BillingReferenceType[] billingReferenceField;
+	//    DocumentReferenceType[] despatchDocumentReferenceField;
+	//    DocumentReferenceType[] receiptDocumentReferenceField;
+	//    DocumentReferenceType[] originatorDocumentReferenceField;
+	//    DocumentReferenceType[] contractDocumentReferenceField;
+	//    DocumentReferenceType[] additionalDocumentReferenceField;
 	Signature               []SignatureType   `xml:",omitempty"`
 	AccountingSupplierParty SupplierPartyType `xml:",omitempty"`
-
 	AccountingCustomerParty CustomerPartyType `xml:",omitempty"`
 	BuyerCustomerParty      CustomerPartyType `xml:",omitempty"`
 	SellerSupplierParty     SupplierPartyType `xml:",omitempty"`
 	TaxRepresentativeParty  PartyType         `xml:",omitempty"`
-	//delivery  DeliveryType[]
-	//paymentMeans PaymentMeansType[]
-	//paymentTerms PaymentTermsType
-	//allowanceCharge AllowanceChargeType[]
-	//taxExchangeRate ExchangeRateType
-	//pricingExchangeRate ExchangeRateType
-	//paymentExchangeRate ExchangeRateType
-	//paymentAlternativeExchangeRate ExchangeRateType
-	//taxTotal TaxTotalType[]
-	//withholdingTaxTotal TaxTotalType[]
-	//legalMonetaryTotal MonetaryTotalType
-	//invoiceLine InvoiceLineType[]
+	//    DeliveryType[] deliveryField;
+	//    PaymentMeansType[] paymentMeansField;
+	//    PaymentTermsType paymentTermsField;
+	//    AllowanceChargeType[] allowanceChargeField;
+	//    ExchangeRateType taxExchangeRateField;
+	//    ExchangeRateType pricingExchangeRateField;
+	//    ExchangeRateType paymentExchangeRateField;
+	//    ExchangeRateType paymentAlternativeExchangeRateField;
+	//    TaxTotalType[] taxTotalField;
+	//    TaxTotalType[] withholdingTaxTotalField;
+	//    MonetaryTotalType legalMonetaryTotalField;
+	//    InvoiceLineType[] invoiceLineField;
 
 }
 
@@ -133,17 +138,37 @@ type PartyType struct {
 	//private EndpointIDType endpointIDField;
 	//private IndustryClassificationCodeType industryClassificationCodeField;
 	PartyIdentification []PartyIdentificationType
-
-	//private PartyNameType partyNameField;
-
-	PostalAddress AddressType
-
-	//private PartyTaxSchemeType partyTaxSchemeField;
+	PartyName           PartyNameType
+	PostalAddress       AddressType
+	PartyTaxSchemeField PartyTaxSchemeType
 	//private PartyLegalEntityType[] partyLegalEntityField;
-	//private ContactType contactField;
+	Contact ContactType
 	//private PersonType personField;
 	//private PartyType agentPartyField;
 
+}
+
+type ContactType struct {
+	Telephone      TextType
+	Telefax        TextType
+	ElectronicMail TextType
+	Note           TextType
+	//OtherCommunication []CommunicationType;
+
+}
+
+type PartyTaxSchemeType struct {
+	TaxScheme TaxSchemeType
+}
+
+type TaxSchemeType struct {
+	Name TextType
+
+	TaxTypeCode CodeType
+}
+
+type PartyNameType struct {
+	Name TextType
 }
 
 type AddressType struct {
