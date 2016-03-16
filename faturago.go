@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	var invoice Invoice
+	var invoice InvoiceType
 
 	err := xml.Unmarshal([]byte(xmlTicariFatura), &invoice)
 

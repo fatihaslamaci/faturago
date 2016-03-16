@@ -16,7 +16,7 @@ func stringKarsilastir(t *testing.T, alanAdi, gerceklesen, beklenen string) {
 
 func TestInvoiceDeserialize(t *testing.T) {
 
-	var invoice Invoice
+	var invoice InvoiceType
 
 	err := xml.Unmarshal([]byte(xmlTicariFatura), &invoice)
 
