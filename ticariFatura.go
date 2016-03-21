@@ -157,7 +157,7 @@ xmlns:n4="http://www.altova.com/samplexml/other-namespace" >
 		<cbc:LineExtensionAmount currencyID="TRY">26003.40</cbc:LineExtensionAmount>
 		<cbc:TaxExclusiveAmount currencyID="TRY">25216.50</cbc:TaxExclusiveAmount>
 		<cbc:TaxInclusiveAmount currencyID="TRY">29755.47</cbc:TaxInclusiveAmount>
-		<cbc:AllowanceTotalAmount currencyID="TRY">786.90 </cbc:AllowanceTotalAmount>
+		<cbc:AllowanceTotalAmount currencyID="TRY">786.90</cbc:AllowanceTotalAmount>
 		<cbc:PayableAmount currencyID="TRY">29755.47</cbc:PayableAmount>
 	</cac:LegalMonetaryTotal>
     <cac:InvoiceLine>
