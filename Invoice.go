@@ -32,21 +32,21 @@ func (c *TimeType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
 type InvoiceType struct {
 	XMLName                        xml.Name `xml:"Invoice"`
 	UBLExtensions                  []UBLExtensionType
-	UBLVersionID                   *UBLVersionIDType
-	CustomizationID                *CustomizationIDType
-	ProfileID                      *ProfileIDType
+	UBLVersionID                   *IdentifierType1
+	CustomizationID                *IdentifierType1
+	ProfileID                      *IdentifierType1
 	ID                             *IDType
 	CopyIndicator                  *CopyIndicatorType `xml:",omitempty"`
 	UUID                           *UUIDType
 	IssueDate                      *IssueDateType
 	IssueTime                      *IssueTimeType
-	InvoiceTypeCode                *InvoiceTypeCodeType
+	InvoiceTypeCode                *CodeType1
 	Note                           []NoteType
-	DocumentCurrencyCode           *DocumentCurrencyCodeType
-	TaxCurrencyCode                *TaxCurrencyCodeType
-	PricingCurrencyCode            *PricingCurrencyCodeType
-	PaymentCurrencyCode            *PaymentCurrencyCodeType
-	PaymentAlternativeCurrencyCode *PaymentAlternativeCurrencyCodeType
+	DocumentCurrencyCode           *CodeType1
+	TaxCurrencyCode                *CodeType1
+	PricingCurrencyCode            *CodeType1
+	PaymentCurrencyCode            *CodeType1
+	PaymentAlternativeCurrencyCode *CodeType1
 	AccountingCost                 *AccountingCostType
 	LineCountNumeric               *LineCountNumericType
 	InvoicePeriod                  *PeriodType
@@ -83,215 +83,22 @@ type PriceType struct {
 	PriceAmount PriceAmountType
 }
 type PriceAmountType struct {
-	AmountType1
+	PriceAmount AmountType1
 }
-type AmountType1 struct {
-	AmountType
-}
+
 type AmountType struct {
 	CurrencyID                string  `xml:"currencyID,attr,omitempty"`
 	CurrencyCodeListVersionID string  `xml:"currencyCodeListVersionID,attr,omitempty"`
 	Value                     float64 `xml:",chardata"`
 }
-type ValueAmountType struct {
-	AmountType1
-}
-type TransactionCurrencyTaxAmountType struct {
-	AmountType1
-}
-type TotalTaxAmountType struct {
-	AmountType1
-}
-type TotalTaskAmountType struct {
-	AmountType1
-}
-type TotalPaymentAmountType struct {
-	AmountType1
-}
-type TotalInvoiceAmountType struct {
-	AmountType1
-}
-type TotalDebitAmountType struct {
-	AmountType1
-}
-type TotalCreditAmountType struct {
-	AmountType1
-}
-type TotalBalanceAmountType struct {
-	AmountType1
-}
-type TotalAmountType struct {
-	AmountType1
-}
-type ThresholdAmountType struct {
-	AmountType1
-}
-type TaxableAmountType struct {
-	AmountType1
-}
-type TaxInclusiveAmountType struct {
-	AmountType1
-}
-type TaxExclusiveAmountType struct {
-	AmountType1
-}
-type TaxEnergyOnAccountAmountType struct {
-}
-type TaxEnergyBalanceAmountType struct {
-	AmountType1
-}
-type TaxEnergyAmountType struct {
-	AmountType1
-}
-type TaxAmountType struct {
-	AmountType1
-}
-type SettlementDiscountAmountType struct {
-	AmountType1
-}
-type RoundingAmountType struct {
-	AmountType1
-}
-type RequiredFeeAmountType struct {
-	AmountType1
-}
-type PrepaidAmountType struct {
-	AmountType1
-}
-type PerUnitAmountType struct {
-	AmountType1
-}
-type PenaltyAmountType struct {
-	AmountType1
-}
-type PayableRoundingAmountType struct {
-	AmountType1
-}
-type PayableAmountType struct {
-	AmountType1
-}
-type PayableAlternativeAmountType struct {
-	AmountType1
-}
-type PartyCapacityAmountType struct {
-	AmountType1
-}
-type PaidAmountType struct {
-	AmountType1
-}
-type MinimumAmountType struct {
-	AmountType1
-}
-type MaximumPaidAmountType struct {
-	AmountType1
-}
-type MaximumAmountType struct {
-	AmountType1
-}
-type MaximumAdvertisementAmountType struct {
-	AmountType1
-}
-type MarketValueAmountType struct {
-	AmountType1
-}
-type LowerTenderAmountType struct {
-	AmountType1
-}
-type LineExtensionAmountType struct {
-	AmountType1
-}
-type LiabilityAmountType struct {
-	AmountType1
-}
-type InventoryValueAmountType struct {
-	AmountType1
-}
-type InsuranceValueAmountType struct {
-	AmountType1
-}
-type InsurancePremiumAmountType struct {
-	AmountType1
-}
-type HigherTenderAmountType struct {
-	AmountType1
-}
-type FreeOnBoardValueAmountType struct {
-	AmountType1
-}
-type FeeAmountType struct {
-	AmountType1
-}
-type FaceValueAmountType struct {
-	AmountType1
-}
-type EstimatedOverallContractAmountType struct {
-	AmountType1
-}
-type EstimatedAmountType struct {
-	AmountType1
-}
-type DocumentationFeeAmountType struct {
-	AmountType1
-}
-type DeclaredStatisticsValueAmountType struct {
-	AmountType1
-}
-type DeclaredForCarriageValueAmountType struct {
-	AmountType1
-}
-type DeclaredCustomsValueAmountType struct {
-	AmountType1
-}
-type DeclaredCarriageValueAmountType struct {
-	AmountType1
-}
-type DebitLineAmountType struct {
-	AmountType1
-}
-type CreditLineAmountType struct {
-	AmountType1
-}
-type CorrectionUnitAmountType struct {
-	AmountType1
-}
-type CorrectionAmountType struct {
-	AmountType1
-}
-type CorporateStockAmountType struct {
-	AmountType1
-}
-type ChargeTotalAmountType struct {
-	AmountType1
-}
-type CallExtensionAmountType struct {
-	AmountType1
-}
-type CallBaseAmountType struct {
-}
-type BaseAmountType struct {
-	AmountType1
-}
-type BalanceAmountType struct {
-	AmountType1
-}
-type AverageSubsequentContractAmountType struct {
-	AmountType1
-}
-type AverageAmountType struct {
-	AmountType1
-}
-type AnnualAverageAmountType struct {
-	AmountType1
-}
+
 type AmountType2 struct {
 	AmountType1
 }
-type AllowanceTotalAmountType struct {
-	AmountType1
+type AmountType1 struct {
+	AmountType
 }
-type AdvertisementAmountType struct {
-	AmountType1
-}
+
 type LineReferenceType struct {
 	LineID            *LineIDType
 	LineStatusCode    *LineStatusCodeType
@@ -313,341 +120,16 @@ type IdentifierType struct {
 	SchemeURI        string `xml:"schemeURI,attr,omitempty"`
 	Value            string `xml:",chardata"`
 }
-type ReferencedSignatureIDType struct {
-	IdentifierType1
-}
-type ExtensionVersionIDType struct {
-	IdentifierType1
-}
-type ExtensionURIType struct {
-}
-type ExtensionAgencyURIType struct {
-	IdentifierType1
-}
-type ExtensionAgencyIDType struct {
-	IdentifierType1
-}
-type WebsiteURIType struct {
-	IdentifierType1
-}
-type VesselIDType struct {
-	IdentifierType1
-}
-type VersionIDType struct {
-	IdentifierType1
-}
-type VariantIDType struct {
-	IdentifierType1
-}
-type ValidatorIDType struct {
-	IdentifierType1
-}
-type UpperOrangeHazardPlacardIDType struct {
-	IdentifierType1
-}
-type UUIDType struct {
-	IdentifierType1
-}
-type URIType struct {
-	IdentifierType1
-}
-type UBLVersionIDType struct {
-	IdentifierType1
-}
-type TransportationServiceDetailsURIType struct {
-	IdentifierType1
-}
-type TransportExecutionPlanReferenceIDType struct {
-	IdentifierType1
-}
-type TrainIDType struct {
-	IdentifierType1
-}
-type TrackingIDType struct {
-	IdentifierType1
-}
-type TraceIDType struct {
-	IdentifierType1
-}
-type TenderEnvelopeIDType struct {
-}
-type SupplierAssignedAccountIDType struct {
-	IdentifierType1
-}
-type SuccessiveSequenceIDType struct {
-	IdentifierType1
-}
-type SubscriberIDType struct {
-	IdentifierType1
-}
-type SpecificationIDType struct {
-	IdentifierType1
-}
-type SignatureIDType struct {
-	IdentifierType1
-}
-type ShippingOrderIDType struct {
-	IdentifierType1
-}
-type SerialIDType struct {
-	IdentifierType1
-}
-type SequenceNumberIDType struct {
-	IdentifierType1
-}
-type SequenceIDType struct {
-	IdentifierType1
-}
-type SellerEventIDType struct {
-	IdentifierType1
-}
-type SecurityIDType struct {
-	IdentifierType1
-}
-type SchemeURIType struct {
-	IdentifierType1
-}
-type SalesOrderLineIDType struct {
-	IdentifierType1
-}
-type SalesOrderIDType struct {
-	IdentifierType1
-}
-type RevisedForecastLineIDType struct {
-	IdentifierType1
-}
-type RequiredCustomsIDType struct {
-	IdentifierType1
-}
-type RequestForQuotationLineIDType struct {
-	IdentifierType1
-}
-type ReleaseIDType struct {
-	IdentifierType1
-}
-type RegistrationNationalityIDType struct {
-	IdentifierType1
-}
-type RegistrationIDType struct {
-	IdentifierType1
-}
-type ReferencedConsignmentIDType struct {
-	IdentifierType1
-}
-type ReferenceIDType struct {
-	IdentifierType1
-}
-type RailCarIDType struct {
-	IdentifierType1
-}
-type RadioCallSignIDType struct {
-	IdentifierType1
-}
-type ProfileIDType struct {
-	IdentifierType1
-}
-type ProfileExecutionIDType struct {
-	IdentifierType1
-}
-type ProductTraceIDType struct {
-	IdentifierType1
-}
-type PrimaryAccountNumberIDType struct {
-	IdentifierType1
-}
-type PreviousVersionIDType struct {
-	IdentifierType1
-}
-type PreviousJobIDType struct {
-	IdentifierType1
-}
-type PrepaidPaymentReferenceIDType struct {
-	IdentifierType1
-}
-type PerformingCarrierAssignedIDType struct {
-	IdentifierType1
-}
-type PaymentTermsDetailsURIType struct {
-	IdentifierType1
-}
-type PaymentMeansIDType struct {
-	IdentifierType1
-}
-type PaymentIDType struct {
-	IdentifierType1
-}
-type ParentDocumentVersionIDType struct {
-	IdentifierType1
-}
-type ParentDocumentLineReferenceIDType struct {
-	IdentifierType1
-}
-type ParentDocumentIDType struct {
-	IdentifierType1
-}
-type OriginalJobIDType struct {
-	IdentifierType1
-}
-type OriginalContractingSystemIDType struct {
-	IdentifierType1
-}
-type OpenTenderIDType struct {
-	IdentifierType1
-}
-type OntologyURIType struct {
-	IdentifierType1
-}
-type NetworkIDType struct {
-	IdentifierType1
-}
-type NationalityIDType struct {
-	IdentifierType1
-}
-type MarkingIDType struct {
-	IdentifierType1
-}
-type LowerOrangeHazardPlacardIDType struct {
-	IdentifierType1
-}
-type LotNumberIDType struct {
-	IdentifierType1
-}
-type LogoReferenceIDType struct {
-	IdentifierType1
-}
-type LocationIDType struct {
-	IdentifierType1
-}
-type LoadingSequenceIDType struct {
-	IdentifierType1
-}
-type LicensePlateIDType struct {
-	IdentifierType1
-}
-type LanguageIDType struct {
-	IdentifierType1
-}
-type JourneyIDType struct {
-	IdentifierType1
-}
-type IssuerIDType struct {
-	IdentifierType1
-}
-type IssueNumberIDType struct {
-	IdentifierType1
-}
-type InstructionIDType struct {
-	IdentifierType1
-}
-type InformationURIType struct {
-	IdentifierType1
-}
-type ImmobilizationCertificateIDType struct {
-	IdentifierType1
-}
-type IdentificationIDType struct {
-	IdentifierType1
-}
 type IDType struct {
 	IdentifierType1
 }
-type HazardClassIDType struct {
+
+type UUIDType struct {
 	IdentifierType1
 }
-type FreightForwarderAssignedIDType struct {
-	IdentifierType1
-}
-type ExtendedIDType struct {
-	IdentifierType1
-}
-type ExchangeMarketIDType struct {
-	IdentifierType1
-}
-type EndpointIDType struct {
-	IdentifierType1
-}
-type EconomicOperatorRegistryURIType struct {
-	IdentifierType1
-}
-type DocumentIDType struct {
-	IdentifierType1
-}
-type CustomizationIDType struct {
-	IdentifierType1
-}
-type CustomerAssignedAccountIDType struct {
-	IdentifierType1
-}
-type ContractedCarrierAssignedIDType struct {
-	IdentifierType1
-}
-type ContractFolderIDType struct {
-	IdentifierType1
-}
-type ConsumptionReportIDType struct {
-	IdentifierType1
-}
-type ConsumptionIDType struct {
-	IdentifierType1
-}
-type ConsignorAssignedIDType struct {
-	IdentifierType1
-}
-type ConsigneeAssignedIDType struct {
-	IdentifierType1
-}
-type CompanyIDType struct {
-	IdentifierType1
-}
-type ChipApplicationIDType struct {
-	IdentifierType1
-}
-type CarrierAssignedIDType struct {
-	IdentifierType1
-}
-type CV2IDType struct {
-	IdentifierType1
-}
-type BuyerProfileURIType struct {
-	IdentifierType1
-}
-type BuyerEventIDType struct {
-	IdentifierType1
-}
-type BusinessIdentityEvidenceIDType struct {
-	IdentifierType1
-}
-type BusinessClassificationEvidenceIDType struct {
-	IdentifierType1
-}
-type BrokerAssignedIDType struct {
-	IdentifierType1
-}
-type BarcodeSymbologyIDType struct {
-	IdentifierType1
-}
-type AwardingCriterionIDType struct {
-	IdentifierType1
-}
-type AuctionURIType struct {
-	IdentifierType1
-}
-type AttributeIDType struct {
-	IdentifierType1
-}
-type AircraftIDType struct {
-	IdentifierType1
-}
-type AgencyIDType struct {
-	IdentifierType1
-}
-type AdditionalAccountIDType struct {
-	IdentifierType1
-}
-type AccountIDType struct {
-	IdentifierType1
-}
+
 type LineStatusCodeType struct {
+	CodeType1
 }
 type CodeType1 struct {
 	CodeType
@@ -664,644 +146,11 @@ type CodeType struct {
 	ListSchemeURI  string `xml:"listSchemeURI,attr,omitempty"`
 	Value          string `xml:",chardata"`
 }
-type ExtensionReasonCodeType struct {
-	CodeType1
-}
-type WorkPhaseCodeType struct {
-	CodeType1
-}
-type WeightingAlgorithmCodeType struct {
-	CodeType1
-}
-type WeekDayCodeType struct {
-	CodeType1
-}
-type ValidationResultCodeType struct {
-	CodeType1
-}
-type UtilityStatementTypeCodeType struct {
-	CodeType1
-}
-type UrgencyCodeType struct {
-	CodeType1
-}
-type UNDGCodeType struct {
-	CodeType1
-}
-type TypeCodeType struct {
-	CodeType1
-}
-type TransportationStatusTypeCodeType struct {
-	CodeType1
-}
-type TransportServiceCodeType struct {
-	CodeType1
-}
-type TransportModeCodeType struct {
-	CodeType1
-}
-type TransportMeansTypeCodeType struct {
-	CodeType1
-}
-type TransportHandlingUnitTypeCodeType struct {
-	CodeType1
-}
-type TransportExecutionStatusCodeType struct {
-	CodeType1
-}
-type TransportEventTypeCodeType struct {
-	CodeType1
-}
-type TransportEquipmentTypeCodeType struct {
-	CodeType1
-}
-type TransportEmergencyCardCodeType struct {
-	CodeType1
-}
-type TransportAuthorizationCodeType struct {
-	CodeType1
-}
-type TransitDirectionCodeType struct {
-	CodeType1
-}
-type TradeServiceCodeType struct {
-	CodeType1
-}
-type TradeItemPackingLabelingTypeCodeType struct {
-	CodeType1
-}
-type TrackingDeviceCodeType struct {
-	CodeType1
-}
-type TimingComplaintCodeType struct {
-	CodeType1
-}
-type TimeFrequencyCodeType struct {
-	CodeType1
-}
-type ThresholdValueComparisonCodeType struct {
-	CodeType1
-}
-type TendererRoleCodeType struct {
-	CodeType1
-}
-type TendererRequirementTypeCodeType struct {
-	CodeType1
-}
-type TenderTypeCodeType struct {
-	CodeType1
-}
-type TenderResultCodeType struct {
-	CodeType1
-}
-type TenderEnvelopeTypeCodeType struct {
-	CodeType1
-}
-type TelecommunicationsSupplyTypeCodeType struct {
-	CodeType1
-}
-type TelecommunicationsServiceCategoryCodeType struct {
-	CodeType1
-}
-type TelecommunicationsServiceCallCodeType struct {
-	CodeType1
-}
-type TaxTypeCodeType struct {
-	CodeType1
-}
-type TaxLevelCodeType struct {
-	CodeType1
-}
-type TaxExemptionReasonCodeType struct {
-	CodeType1
-}
-type TaxCurrencyCodeType struct {
-	CodeType1
-}
-type TariffCodeType struct {
-	CodeType1
-}
-type TariffClassCodeType struct {
-	CodeType1
-}
-type TargetCurrencyCodeType struct {
-	CodeType1
-}
-type SupplyChainActivityTypeCodeType struct {
-	CodeType1
-}
-type SubstitutionStatusCodeType struct {
-	CodeType1
-}
-type SubscriberTypeCodeType struct {
-	CodeType1
-}
-type SubmissionMethodCodeType struct {
-	CodeType1
-}
-type SubcontractingConditionsCodeType struct {
-	CodeType1
-}
-type StatusReasonCodeType struct {
-	CodeType1
-}
-type StatusCodeType struct {
-	CodeType1
-}
-type StatementTypeCodeType struct {
-	CodeType1
-}
-type SpecificationTypeCodeType struct {
-	CodeType1
-}
-type SourceCurrencyCodeType struct {
-	CodeType1
-}
-type SizeTypeCodeType struct {
-}
-type ShortageActionCodeType struct {
-	CodeType1
-}
-type ShippingPriorityLevelCodeType struct {
-	CodeType1
-}
-type ServiceTypeCodeType struct {
-	CodeType1
-}
-type ServiceInformationPreferenceCodeType struct {
-	CodeType1
-}
-type SecurityClassificationCodeType struct {
-	CodeType1
-}
-type SealStatusCodeType struct {
-	CodeType1
-}
-type SealIssuerTypeCodeType struct {
-	CodeType1
-}
-type RoleCodeType struct {
-	CodeType1
-}
-type RevisionStatusCodeType struct {
-	CodeType1
-}
-type RetailEventStatusCodeType struct {
-	CodeType1
-}
-type ResponseCodeType struct {
-	CodeType1
-}
-type ResolutionCodeType struct {
-	CodeType1
-}
-type ResidenceTypeCodeType struct {
-	CodeType1
-}
-type RequestedInvoiceCurrencyCodeType struct {
-	CodeType1
-}
-type ReminderTypeCodeType struct {
-	CodeType1
-}
-type RejectReasonCodeType struct {
-	CodeType1
-}
-type RejectActionCodeType struct {
-	CodeType1
-}
-type ReferenceEventCodeType struct {
-	CodeType1
-}
-type ReceiptAdviceTypeCodeType struct {
-	CodeType1
-}
-type QuantityDiscrepancyCodeType struct {
-	CodeType1
-}
-type QualityControlCodeType struct {
-	CodeType1
-}
-type PurposeCodeType struct {
-	CodeType1
-}
-type ProviderTypeCodeType struct {
-	CodeType1
-}
-type PromotionalEventTypeCodeType struct {
-	CodeType1
-}
-type ProfileStatusCodeType struct {
-	CodeType1
-}
-type ProcurementTypeCodeType struct {
-	CodeType1
-}
-type ProcurementSubTypeCodeType struct {
-	CodeType1
-}
-type ProcessReasonCodeType struct {
-	CodeType1
-}
-type ProcedureCodeType struct {
-	CodeType1
-}
-type PrivacyCodeType struct {
-	CodeType1
-}
-type PricingCurrencyCodeType struct {
-	CodeType1
-}
-type PriceTypeCodeType struct {
-	CodeType1
-}
-type PriceEvaluationCodeType struct {
-	CodeType1
-}
-type PreviousMeterReadingMethodCodeType struct {
-	CodeType1
-}
-type PreviousCancellationReasonCodeType struct {
-	CodeType1
-}
-type PreferenceCriterionCodeType struct {
-	CodeType1
-}
-type PositionCodeType struct {
-	CodeType1
-}
-type PerformanceMetricTypeCodeType struct {
-	CodeType1
-}
-type PaymentPurposeCodeType struct {
-	CodeType1
-}
-type PaymentMeansCodeType struct {
-	CodeType1
-}
-type PaymentFrequencyCodeType struct {
-	CodeType1
-}
-type PaymentCurrencyCodeType struct {
-	CodeType1
-}
-type PaymentChannelCodeType struct {
-	CodeType1
-}
-type PaymentAlternativeCurrencyCodeType struct {
-	CodeType1
-}
-type PartyTypeCodeType struct {
-	CodeType1
-}
-type PartPresentationCodeType struct {
-	CodeType1
-}
-type ParentDocumentTypeCodeType struct {
-	CodeType1
-}
-type PackingCriteriaCodeType struct {
-	CodeType1
-}
-type PackagingTypeCodeType struct {
-	CodeType1
-}
-type PackageLevelCodeType struct {
-	CodeType1
-}
-type PackLevelCodeType struct {
-	CodeType1
-}
-type OwnerTypeCodeType struct {
-	CodeType1
-}
-type OrderTypeCodeType struct {
-	CodeType1
-}
-type OrderResponseCodeType struct {
-	CodeType1
-}
-type OneTimeChargeTypeCodeType struct {
-	CodeType1
-}
-type NotificationTypeCodeType struct {
-	CodeType1
-}
-type NatureCodeType struct {
-	CodeType1
-}
-type NameCodeType struct {
-	CodeType1
-}
-type MiscellaneousEventTypeCodeType struct {
-	CodeType1
-}
-type MimeCodeType struct {
-	CodeType1
-}
-type MeterReadingTypeCodeType struct {
-	CodeType1
-}
-type MeterConstantCodeType struct {
-	CodeType1
-}
-type MedicalFirstAidGuideCodeType struct {
-	CodeType1
-}
-type MathematicOperatorCodeType struct {
-	CodeType1
-}
-type MandateTypeCodeType struct {
-	CodeType1
-}
-type LossRiskResponsibilityCodeType struct {
-	CodeType1
-}
-type LongitudeDirectionCodeType struct {
-	CodeType1
-}
-type LocationTypeCodeType struct {
-	CodeType1
-}
-type LocaleCodeType struct {
-	CodeType1
-}
-type LifeCycleStatusCodeType struct {
-	CodeType1
-}
-type LatitudeDirectionCodeType struct {
-	CodeType1
-}
-type LatestMeterReadingMethodCodeType struct {
-}
-type ItemClassificationCodeType struct {
-	CodeType1
-}
-type InvoiceTypeCodeType struct {
-	CodeType1
-}
-type InspectionMethodCodeType struct {
-	CodeType1
-}
-type InhalationToxicityZoneCodeType struct {
-	CodeType1
-}
-type IndustryClassificationCodeType struct {
-	CodeType1
-}
-type ImportanceCodeType struct {
-	CodeType1
-}
-type IdentificationCodeType struct {
-	CodeType1
-}
-type HeatingTypeCodeType struct {
-	CodeType1
-}
-type HazardousRegulationCodeType struct {
-	CodeType1
-}
-type HazardousCategoryCodeType struct {
-	CodeType1
-}
-type HandlingCodeType struct {
-	CodeType1
-}
-type GuaranteeTypeCodeType struct {
-	CodeType1
-}
-type GenderCodeType struct {
-	CodeType1
-}
-type FundingProgramCodeType struct {
-	CodeType1
-}
-type FullnessIndicationCodeType struct {
-	CodeType1
-}
-type FreightRateClassCodeType struct {
-}
-type FormatCodeType struct {
-	CodeType1
-}
-type ForecastTypeCodeType struct {
-	CodeType1
-}
-type ForecastPurposeCodeType struct {
-	CodeType1
-}
-type FinancingInstrumentCodeType struct {
-	CodeType1
-}
-type FeatureTacticTypeCodeType struct {
-	CodeType1
-}
-type ExpressionCodeType struct {
-	CodeType1
-}
-type ExpenseCodeType struct {
-	CodeType1
-}
-type ExemptionReasonCodeType struct {
-	CodeType1
-}
-type ExecutionRequirementCodeType struct {
-	CodeType1
-}
-type ExceptionStatusCodeType struct {
-	CodeType1
-}
-type ExceptionResolutionCodeType struct {
-	CodeType1
-}
-type EvidenceTypeCodeType struct {
-	CodeType1
-}
-type EvaluationCriterionTypeCodeType struct {
-	CodeType1
-}
-type EnvironmentalEmissionTypeCodeType struct {
-	CodeType1
-}
-type EncodingCodeType struct {
-	CodeType1
-}
-type EmergencyProceduresCodeType struct {
-	CodeType1
-}
-type DutyCodeType struct {
-	CodeType1
-}
-type DocumentTypeCodeType struct {
-	CodeType1
-}
-type DocumentStatusReasonCodeType struct {
-	CodeType1
-}
-type DocumentStatusCodeType struct {
-	CodeType1
-}
-type DocumentCurrencyCodeType struct {
-	CodeType1
-}
-type DispositionCodeType struct {
-	CodeType1
-}
-type DisplayTacticTypeCodeType struct {
-	CodeType1
-}
-type DirectionCodeType struct {
-	CodeType1
-}
-type DespatchAdviceTypeCodeType struct {
-	CodeType1
-}
-type DescriptionCodeType struct {
-	CodeType1
-}
-type DeclarationTypeCodeType struct {
-	CodeType1
-}
-type DataSourceCodeType struct {
-	CodeType1
-}
-type CustomsStatusCodeType struct {
-	CodeType1
-}
-type CurrentChargeTypeCodeType struct {
-	CodeType1
-}
-type CurrencyCodeType struct {
-	CodeType1
-}
-type CreditNoteTypeCodeType struct {
-	CodeType1
-}
-type CountrySubentityCodeType struct {
-	CodeType1
-}
-type CorrectionTypeCodeType struct {
-	CodeType1
-}
-type CorporateRegistrationTypeCodeType struct {
-	CodeType1
-}
-type CoordinateSystemCodeType struct {
-	CodeType1
-}
-type ContractingSystemCodeType struct {
-	CodeType1
-}
-type ContractTypeCodeType struct {
-	CodeType1
-}
-type ConsumptionTypeCodeType struct {
-	CodeType1
-}
-type ConsumptionLevelCodeType struct {
-	CodeType1
-}
-type ConsumersEnergyLevelCodeType struct {
-	CodeType1
-}
-type ConsumerIncentiveTacticTypeCodeType struct {
-	CodeType1
-}
-type ConstitutionCodeType struct {
-	CodeType1
-}
-type ConditionCodeType struct {
-}
-type ComparisonDataSourceCodeType struct {
-	CodeType1
-}
-type ComparisonDataCodeType struct {
-	CodeType1
-}
-type CompanyLiquidationStatusCodeType struct {
-	CodeType1
-}
-type CompanyLegalFormCodeType struct {
-	CodeType1
-}
-type CommodityCodeType struct {
-	CodeType1
-}
-type CollaborationPriorityCodeType struct {
-	CodeType1
-}
-type CharacterSetCodeType struct {
-	CodeType1
-}
-type ChannelCodeType struct {
-	CodeType1
-}
-type CertificateTypeCodeType struct {
-	CodeType1
-}
-type CargoTypeCodeType struct {
-	CodeType1
-}
-type CardTypeCodeType struct {
-	CodeType1
-}
-type CardChipCodeType struct {
-	CodeType1
-}
-type CapabilityTypeCodeType struct {
-	CodeType1
-}
-type CalculationMethodCodeType struct {
-	CodeType1
-}
-type CalculationExpressionCodeType struct {
-	CodeType1
-}
-type AwardingMethodTypeCodeType struct {
-	CodeType1
-}
-type AwardingCriterionTypeCodeType struct {
-	CodeType1
-}
-type AvailabilityStatusCodeType struct {
-	CodeType1
-}
-type ApplicationStatusCodeType struct {
-}
-type AllowanceChargeReasonCodeType struct {
-	CodeType1
-}
-type AdmissionCodeType struct {
-	CodeType1
-}
-type AdjustmentReasonCodeType struct {
-	CodeType1
-}
-type AddressTypeCodeType struct {
-	CodeType1
-}
-type AddressFormatCodeType struct {
-	CodeType1
-}
-type ActivityTypeCodeType struct {
-	CodeType1
-}
-type ActionCodeType struct {
-	CodeType1
-}
-type AccountingCostCodeType struct {
-	CodeType1
-}
-type AccountTypeCodeType struct {
-	CodeType1
-}
-type AccountFormatCodeType struct {
-	CodeType1
-}
+
 type DocumentReferenceType struct {
 	ID                  *IDType
 	IssueDate           *IssueDateType
-	DocumentTypeCode    *DocumentTypeCodeType
+	DocumentTypeCode    *CodeType1
 	DocumentType        *DocumentTypeType
 	DocumentDescription []DocumentDescriptionType
 	Attachment          *AttachmentType
@@ -2153,7 +1002,7 @@ type GraphicType struct {
 	BinaryObjectType
 }
 type ExternalReferenceType struct {
-	URI *URIType
+	URI *IdentifierType1
 }
 type PeriodType struct {
 	StartDate       *StartDateType
@@ -2350,9 +1199,9 @@ type AltitudeMeasureType struct {
 	MeasureType1
 }
 type PartyType struct {
-	WebsiteURI                 *WebsiteURIType
-	EndpointID                 *EndpointIDType
-	IndustryClassificationCode *IndustryClassificationCodeType
+	WebsiteURI                 *IdentifierType1
+	EndpointID                 *IdentifierType1
+	IndustryClassificationCode *CodeType1
 	PartyIdentification        []PartyIdentificationType
 	PartyName                  *PartyNameType
 	PostalAddress              *AddressType
@@ -2384,7 +1233,7 @@ type AddressType struct {
 	Country             *CountryType
 }
 type CountryType struct {
-	IdentificationCode *IdentificationCodeType
+	IdentificationCode *CodeType1
 	Name               *NameType1
 }
 type PartyTaxSchemeType struct {
@@ -2392,14 +1241,14 @@ type PartyTaxSchemeType struct {
 }
 type TaxSchemeType struct {
 	Name        *NameType1
-	TaxTypeCode *TaxTypeCodeType
+	TaxTypeCode *CodeType1
 }
 type PartyLegalEntityType struct {
 	RegistrationName            *RegistrationNameType
-	CompanyID                   *CompanyIDType
+	CompanyID                   *IdentifierType1
 	RegistrationDate            *RegistrationDateType
 	SoleProprietorshipIndicator *SoleProprietorshipIndicatorType
-	CorporateStockAmount        *CorporateStockAmountType
+	CorporateStockAmount        *AmountType1
 	FullyPaidSharesIndicator    *FullyPaidSharesIndicatorType
 	CorporateRegistrationScheme *CorporateRegistrationSchemeType
 	HeadOfficeParty             *PartyType
@@ -2590,7 +1439,7 @@ type AcceptedIndicatorType struct {
 type CorporateRegistrationSchemeType struct {
 	ID                            *IDType
 	Name                          *NameType1
-	CorporateRegistrationTypeCode *CorporateRegistrationTypeCodeType
+	CorporateRegistrationTypeCode *CodeType1
 	JurisdictionRegionAddress     []AddressType
 }
 type ContactType struct {
@@ -2601,7 +1450,7 @@ type ContactType struct {
 	OtherCommunication []CommunicationType
 }
 type CommunicationType struct {
-	ChannelCode *ChannelCodeType
+	ChannelCode *CodeType1
 	Channel     *ChannelType
 	Value       *ValueType
 }
@@ -2611,13 +1460,13 @@ type PersonType struct {
 	Title                     *TitleType
 	MiddleName                *MiddleNameType
 	NameSuffix                *NameSuffixType
-	NationalityID             *NationalityIDType
+	NationalityID             *IdentifierType1
 	FinancialAccount          *FinancialAccountType
 	IdentityDocumentReference *DocumentReferenceType
 }
 type FinancialAccountType struct {
 	ID                         *IDType
-	CurrencyCode               *CurrencyCodeType
+	CurrencyCode               *CodeType1
 	PaymentNote                *PaymentNoteType
 	FinancialInstitutionBranch *BranchType
 }
@@ -2630,23 +1479,23 @@ type FinancialInstitutionType struct {
 }
 type OrderLineReferenceType struct {
 	LineID           *LineIDType
-	SalesOrderLineID *SalesOrderLineIDType
+	SalesOrderLineID *IdentifierType1
 	UUID             *UUIDType
 	LineStatusCode   *LineStatusCodeType
 	OrderReference   *OrderReferenceType
 }
 type OrderReferenceType struct {
 	ID                *IDType
-	SalesOrderID      *SalesOrderIDType
+	SalesOrderID      *IdentifierType1
 	IssueDate         *IssueDateType
-	OrderTypeCode     *OrderTypeCodeType
+	OrderTypeCode     *CodeType1
 	DocumentReference *DocumentReferenceType
 }
 type InvoiceLineType struct {
 	ID                    IDType
 	Note                  []NoteType
 	InvoicedQuantity      *InvoicedQuantityType
-	LineExtensionAmount   *LineExtensionAmountType
+	LineExtensionAmount   *AmountType1
 	OrderLineReference    []OrderLineReferenceType
 	DespatchLineReference []LineReferenceType
 	ReceiptLineReference  []LineReferenceType
@@ -2870,7 +1719,7 @@ type DeliveryType struct {
 	ActualDeliveryTime          *ActualDeliveryTimeType
 	LatestDeliveryDate          *LatestDeliveryDateType
 	LatestDeliveryTime          *LatestDeliveryTimeType
-	TrackingID                  *TrackingIDType
+	TrackingID                  *IdentifierType1
 	DeliveryAddress             *AddressType
 	AlternativeDeliveryLocation *LocationType1
 	EstimatedDeliveryPeriod     *PeriodType
@@ -2901,7 +1750,7 @@ type DeliveryTermsType struct {
 }
 type ShipmentType struct {
 	ID                                 *IDType
-	HandlingCode                       *HandlingCodeType
+	HandlingCode                       *CodeType1
 	HandlingInstructions               *HandlingInstructionsType
 	GrossWeightMeasure                 *GrossWeightMeasureType
 	NetWeightMeasure                   *NetWeightMeasureType
@@ -2909,11 +1758,11 @@ type ShipmentType struct {
 	NetVolumeMeasure                   *NetVolumeMeasureType
 	TotalGoodsItemQuantity             *TotalGoodsItemQuantityType
 	TotalTransportHandlingUnitQuantity *TotalTransportHandlingUnitQuantityType
-	InsuranceValueAmount               *InsuranceValueAmountType
-	DeclaredCustomsValueAmount         *DeclaredCustomsValueAmountType
-	DeclaredForCarriageValueAmount     *DeclaredForCarriageValueAmountType
-	DeclaredStatisticsValueAmount      *DeclaredStatisticsValueAmountType
-	FreeOnBoardValueAmount             *FreeOnBoardValueAmountType
+	InsuranceValueAmount               *AmountType1
+	DeclaredCustomsValueAmount         *AmountType1
+	DeclaredForCarriageValueAmount     *AmountType1
+	DeclaredStatisticsValueAmount      *AmountType1
+	FreeOnBoardValueAmount             *AmountType1
 	SpecialInstructions                []SpecialInstructionsType
 	TransportHandlingUnit              []TransportHandlingUnitType
 	ReturnAddress                      *AddressType
@@ -2922,14 +1771,14 @@ type ShipmentType struct {
 }
 type TransportHandlingUnitType struct {
 	ID                              *IDType
-	TransportHandlingUnitTypeCode   *TransportHandlingUnitTypeCodeType
-	HandlingCode                    *HandlingCodeType
+	TransportHandlingUnitTypeCode   *CodeType1
+	HandlingCode                    *CodeType1
 	HandlingInstructions            *HandlingInstructionsType
 	HazardousRiskIndicator          *HazardousRiskIndicatorType
 	TotalGoodsItemQuantity          *TotalGoodsItemQuantityType
 	TotalPackageQuantity            *TotalPackageQuantityType
 	DamageRemarks                   []DamageRemarksType
-	TraceID                         *TraceIDType
+	TraceID                         *IdentifierType1
 	ActualPackage                   []PackageType
 	TransportEquipment              []TransportEquipmentType
 	TransportMeans                  []TransportMeansType
@@ -2946,8 +1795,8 @@ type PackageType struct {
 	CustomsDeclaration          *IDType
 	Quantity                    *QuantityType2
 	ReturnableMaterialIndicator *ReturnableMaterialIndicatorType
-	PackageLevelCode            *PackageLevelCodeType
-	PackagingTypeCode           *PackagingTypeCodeType
+	PackageLevelCode            *CodeType1
+	PackagingTypeCode           *CodeType1
 	PackingMaterial             []PackingMaterialType
 	ContainedPackage            []PackageType
 	GoodsItem                   []GoodsItemType
@@ -2957,25 +1806,25 @@ type GoodsItemType struct {
 	ID                               *IDType
 	Description                      []DescriptionType
 	HazardousRiskIndicator           *HazardousRiskIndicatorType
-	DeclaredCustomsValueAmount       *DeclaredCustomsValueAmountType
-	DeclaredForCarriageValueAmount   *DeclaredForCarriageValueAmountType
-	DeclaredStatisticsValueAmount    *DeclaredStatisticsValueAmountType
-	FreeOnBoardValueAmount           *FreeOnBoardValueAmountType
-	InsuranceValueAmount             *InsuranceValueAmountType
-	ValueAmount                      *ValueAmountType
+	DeclaredCustomsValueAmount       *AmountType1
+	DeclaredForCarriageValueAmount   *AmountType1
+	DeclaredStatisticsValueAmount    *AmountType1
+	FreeOnBoardValueAmount           *AmountType1
+	InsuranceValueAmount             *AmountType1
+	ValueAmount                      *AmountType1
 	GrossWeightMeasure               *GrossWeightMeasureType
 	NetWeightMeasure                 *NetWeightMeasureType
 	ChargeableWeightMeasure          *ChargeableWeightMeasureType
 	GrossVolumeMeasure               *GrossVolumeMeasureType
 	NetVolumeMeasure                 *NetVolumeMeasureType
 	Quantity                         *QuantityType2
-	RequiredCustomsID                *RequiredCustomsIDType
-	CustomsStatusCode                *CustomsStatusCodeType
+	RequiredCustomsID                *IdentifierType1
+	CustomsStatusCode                *CodeType1
 	CustomsTariffQuantity            *CustomsTariffQuantityType
 	CustomsImportClassifiedIndicator *CustomsImportClassifiedIndicatorType
 	ChargeableQuantity               *ChargeableQuantityType
 	ReturnableQuantity               *ReturnableQuantityType
-	TraceID                          *TraceIDType
+	TraceID                          *IdentifierType1
 	Item                             []ItemType
 	FreightAllowanceCharge           []AllowanceChargeType
 	Temperature                      []TemperatureType
@@ -2999,27 +1848,27 @@ type ItemIdentificationType struct {
 	ID *IDType
 }
 type CommodityClassificationType struct {
-	ItemClassificationCode *ItemClassificationCodeType
+	ItemClassificationCode *CodeType1
 }
 type ItemInstanceType struct {
-	ProductTraceID         *ProductTraceIDType
+	ProductTraceID         *IdentifierType1
 	ManufactureDate        *ManufactureDateType
 	ManufactureTime        *ManufactureTimeType
 	BestBeforeDate         *BestBeforeDateType
-	RegistrationID         *RegistrationIDType
-	SerialID               *SerialIDType
+	RegistrationID         *IdentifierType1
+	SerialID               *IdentifierType1
 	AdditionalItemProperty []ItemPropertyType
 	LotIdentification      *LotIdentificationType
 }
 type ItemPropertyType struct {
 	ID                *IDType
 	Name              *NameType1
-	NameCode          *NameCodeType
+	NameCode          *CodeType1
 	TestMethod        *TestMethodType
 	Value             *ValueType
 	ValueQuantity     *ValueQuantityType
 	ValueQualifier    []ValueQualifierType
-	ImportanceCode    *ImportanceCodeType
+	ImportanceCode    *CodeType1
 	ListValue         []ListValueType
 	UsabilityPeriod   *PeriodType
 	ItemPropertyGroup []ItemPropertyGroupType
@@ -3029,10 +1878,10 @@ type ItemPropertyType struct {
 type ItemPropertyGroupType struct {
 	ID             *IDType
 	Name           *NameType1
-	ImportanceCode *ImportanceCodeType
+	ImportanceCode *CodeType1
 }
 type DimensionType struct {
-	AttributeID    *AttributeIDType
+	AttributeID    *IdentifierType1
 	Measure        *MeasureType2
 	Description    []DescriptionType
 	MinimumMeasure *MinimumMeasureType
@@ -3043,7 +1892,7 @@ type ItemPropertyRangeType struct {
 	MaximumValue *MaximumValueType
 }
 type LotIdentificationType struct {
-	LotNumberID            *LotNumberIDType
+	LotNumberID            *IdentifierType1
 	ExpiryDate             *ExpiryDateType
 	AdditionalItemProperty []ItemPropertyType
 }
@@ -3053,8 +1902,8 @@ type AllowanceChargeType struct {
 	MultiplierFactorNumeric *MultiplierFactorNumericType
 	SequenceNumeric         *SequenceNumericType
 	Amount                  *AmountType2
-	BaseAmount              *BaseAmountType
-	PerUnitAmount           *PerUnitAmountType
+	BaseAmount              *AmountType1
+	PerUnitAmount           *AmountType1
 }
 type MultiplierFactorNumericType struct {
 	NumericType1
@@ -3184,22 +2033,22 @@ type BudgetYearNumericType struct {
 	NumericType1
 }
 type TemperatureType struct {
-	AttributeID *AttributeIDType
+	AttributeID *IdentifierType1
 	Measure     *MeasureType2
 	Description []DescriptionType
 }
 type TransportEquipmentType struct {
 	ID                         *IDType
-	TransportEquipmentTypeCode *TransportEquipmentTypeCodeType
+	TransportEquipmentTypeCode *CodeType1
 	Description                *DescriptionType
 }
 type TransportMeansType struct {
-	JourneyID                 *JourneyIDType
-	RegistrationNationalityID *RegistrationNationalityIDType
+	JourneyID                 *IdentifierType1
+	RegistrationNationalityID *IdentifierType1
 	RegistrationNationality   []RegistrationNationalityType
-	DirectionCode             *DirectionCodeType
-	TransportMeansTypeCode    *TransportMeansTypeCodeType
-	TradeServiceCode          *TradeServiceCodeType
+	DirectionCode             *CodeType1
+	TransportMeansTypeCode    *CodeType1
+	TradeServiceCode          *CodeType1
 	Stowage                   *StowageType
 	AirTransport              *AirTransportType
 	RoadTransport             *RoadTransportType
@@ -3209,24 +2058,24 @@ type TransportMeansType struct {
 	MeasurementDimension      []DimensionType
 }
 type StowageType struct {
-	LocationID           *LocationIDType
+	LocationID           *IdentifierType1
 	Location             []LocationType
 	MeasurementDimension []DimensionType
 }
 type AirTransportType struct {
-	AircraftID *AircraftIDType
+	AircraftID *IdentifierType1
 }
 type RoadTransportType struct {
-	LicensePlateID *LicensePlateIDType
+	LicensePlateID *IdentifierType1
 }
 type RailTransportType struct {
-	TrainID   *TrainIDType
-	RailCarID *RailCarIDType
+	TrainID   *IdentifierType1
+	RailCarID *IdentifierType1
 }
 type MaritimeTransportType struct {
-	VesselID                             *VesselIDType
+	VesselID                             *IdentifierType1
 	VesselName                           *VesselNameType
-	RadioCallSignID                      *RadioCallSignIDType
+	RadioCallSignID                      *IdentifierType1
 	ShipsRequirements                    []ShipsRequirementsType
 	GrossTonnageMeasure                  *GrossTonnageMeasureType
 	NetTonnageMeasure                    *NetTonnageMeasureType
@@ -3234,11 +2083,11 @@ type MaritimeTransportType struct {
 	RegistryPortLocation                 *LocationType1
 }
 type HazardousGoodsTransitType struct {
-	TransportEmergencyCardCode *TransportEmergencyCardCodeType
-	PackingCriteriaCode        *PackingCriteriaCodeType
-	HazardousRegulationCode    *HazardousRegulationCodeType
-	InhalationToxicityZoneCode *InhalationToxicityZoneCodeType
-	TransportAuthorizationCode *TransportAuthorizationCodeType
+	TransportEmergencyCardCode *CodeType1
+	PackingCriteriaCode        *CodeType1
+	HazardousRegulationCode    *CodeType1
+	InhalationToxicityZoneCode *CodeType1
+	TransportAuthorizationCode *CodeType1
 	MaximumTemperature         *TemperatureType
 	MinimumTemperature         *TemperatureType
 }
@@ -3247,37 +2096,37 @@ type CustomsDeclarationType struct {
 	IssuerParty *PartyType
 }
 type TaxTotalType struct {
-	TaxAmount   *TaxAmountType
+	TaxAmount   *AmountType1
 	TaxSubtotal []TaxSubtotalType
 }
 type TaxSubtotalType struct {
-	TaxableAmount                *TaxableAmountType
-	TaxAmount                    *TaxAmountType
+	TaxableAmount                *AmountType1
+	TaxAmount                    *AmountType1
 	CalculationSequenceNumeric   *CalculationSequenceNumericType
-	TransactionCurrencyTaxAmount *TransactionCurrencyTaxAmountType
+	TransactionCurrencyTaxAmount *AmountType1
 	Percent                      *PercentType1
 	BaseUnitMeasure              *BaseUnitMeasureType
-	PerUnitAmount                *PerUnitAmountType
+	PerUnitAmount                *AmountType1
 	TaxCategory                  *TaxCategoryType
 }
 type TaxCategoryType struct {
 	Name                   *NameType1
-	TaxExemptionReasonCode *TaxExemptionReasonCodeType
+	TaxExemptionReasonCode *CodeType1
 	TaxExemptionReason     *TaxExemptionReasonType
 	TaxScheme              *TaxSchemeType
 }
 type MonetaryTotalType struct {
-	LineExtensionAmount   *LineExtensionAmountType
-	TaxExclusiveAmount    *TaxExclusiveAmountType
-	TaxInclusiveAmount    *TaxInclusiveAmountType
-	AllowanceTotalAmount  *AllowanceTotalAmountType
-	ChargeTotalAmount     *ChargeTotalAmountType
-	PayableRoundingAmount *PayableRoundingAmountType
-	PayableAmount         *PayableAmountType
+	LineExtensionAmount   *AmountType1
+	TaxExclusiveAmount    *AmountType1
+	TaxInclusiveAmount    *AmountType1
+	AllowanceTotalAmount  *AmountType1
+	ChargeTotalAmount     *AmountType1
+	PayableRoundingAmount *AmountType1
+	PayableAmount         *AmountType1
 }
 type ExchangeRateType struct {
-	SourceCurrencyCode *SourceCurrencyCodeType
-	TargetCurrencyCode *TargetCurrencyCodeType
+	SourceCurrencyCode *CodeType1
+	TargetCurrencyCode *CodeType1
 	CalculationRate    *CalculationRateType
 	Date               *DateType1
 }
@@ -3285,14 +2134,14 @@ type PaymentTermsType struct {
 	Note                    *NoteType
 	PenaltySurchargePercent *PenaltySurchargePercentType
 	Amount                  *AmountType2
-	PenaltyAmount           *PenaltyAmountType
+	PenaltyAmount           *AmountType1
 	PaymentDueDate          *PaymentDueDateType
 	SettlementPeriod        *PeriodType
 }
 type PaymentMeansType struct {
-	PaymentMeansCode      *PaymentMeansCodeType
+	PaymentMeansCode      *CodeType1
 	PaymentDueDate        *PaymentDueDateType
-	PaymentChannelCode    *PaymentChannelCodeType
+	PaymentChannelCode    *CodeType1
 	InstructionNote       *InstructionNoteType
 	PayerFinancialAccount *FinancialAccountType
 	PayeeFinancialAccount *FinancialAccountType
@@ -3324,10 +2173,10 @@ type BillingReferenceType struct {
 	BillingReferenceLine                  []BillingReferenceLineType
 }
 type TransportEventType struct {
-	IdentificationID       *IdentificationIDType
+	IdentificationID       *IdentifierType1
 	OccurrenceDate         *OccurrenceDateType
 	OccurrenceTime         *OccurrenceTimeType
-	TransportEventTypeCode *TransportEventTypeCodeType
+	TransportEventTypeCode *CodeType1
 	Description            []DescriptionType
 	CompletionIndicator    *CompletionIndicatorType
 	ReportedShipment       *ShipmentType
@@ -3338,13 +2187,13 @@ type TransportEventType struct {
 	Period                 []PeriodType
 }
 type StatusType struct {
-	ConditionCode       *ConditionCodeType
+	ConditionCode       *CodeType1
 	ReferenceDate       *ReferenceDateType
 	ReferenceTime       *ReferenceTimeType
 	Description         []DescriptionType
-	StatusReasonCode    *StatusReasonCodeType
+	StatusReasonCode    *CodeType1
 	StatusReason        []StatusReasonType
-	SequenceID          *SequenceIDType
+	SequenceID          *IdentifierType1
 	Text                []TextType2
 	IndicationIndicator *IndicationIndicatorType
 	Percent             *PercentType1
@@ -3352,7 +2201,7 @@ type StatusType struct {
 	Condition           []ConditionType1
 }
 type ConditionType1 struct {
-	AttributeID    *AttributeIDType
+	AttributeID    *IdentifierType1
 	Measure        *MeasureType2
 	Description    []DescriptionType
 	MinimumMeasure *MinimumMeasureType
@@ -3365,7 +2214,7 @@ type RelatedItemType struct {
 }
 type ActivityDataLineType struct {
 	ID                          *IDType
-	SupplyChainActivityTypeCode *SupplyChainActivityTypeCodeType
+	SupplyChainActivityTypeCode *CodeType1
 	BuyerCustomerParty          *CustomerPartyType
 	SellerSupplierParty         *SupplierPartyType
 	ActivityPeriod              *PeriodType
@@ -3390,8 +2239,8 @@ type DocumentResponseType struct {
 	LineResponse      []LineResponseType
 }
 type ResponseType struct {
-	ReferenceID  *ReferenceIDType
-	ResponseCode *ResponseCodeType
+	ReferenceID  *IdentifierType1
+	ResponseCode *CodeType1
 	Description  []DescriptionType
 }
 type LineResponseType struct {
@@ -3403,9 +2252,9 @@ type QualifyingPartyType struct {
 	PersonalSituation                []PersonalSituationType
 	OperatingYearsQuantity           *OperatingYearsQuantityType
 	EmployeeQuantity                 *EmployeeQuantityType
-	BusinessClassificationEvidenceID *BusinessClassificationEvidenceIDType
-	BusinessIdentityEvidenceID       *BusinessIdentityEvidenceIDType
-	TendererRoleCode                 *TendererRoleCodeType
+	BusinessClassificationEvidenceID *IdentifierType1
+	BusinessIdentityEvidenceID       *IdentifierType1
+	TendererRoleCode                 *CodeType1
 	BusinessClassificationScheme     *ClassificationSchemeType
 	TechnicalCapability              []CapabilityType
 	FinancialCapability              []CapabilityType
@@ -3422,12 +2271,12 @@ type ClassificationSchemeType struct {
 	Note                   []NoteType
 	Name                   *NameType1
 	Description            []DescriptionType
-	AgencyID               *AgencyIDType
+	AgencyID               *IdentifierType1
 	AgencyName             *AgencyNameType
-	VersionID              *VersionIDType
-	URI                    *URIType
-	SchemeURI              *SchemeURIType
-	LanguageID             *LanguageIDType
+	VersionID              *IdentifierType1
+	URI                    *IdentifierType1
+	SchemeURI              *IdentifierType1
+	LanguageID             *IdentifierType1
 	ClassificationCategory []ClassificationCategoryType
 }
 type ClassificationCategoryType struct {
@@ -3437,9 +2286,9 @@ type ClassificationCategoryType struct {
 	CategorizesClassificationCategory []ClassificationCategoryType
 }
 type CapabilityType struct {
-	CapabilityTypeCode *CapabilityTypeCodeType
+	CapabilityTypeCode *CodeType1
 	Description        []DescriptionType
-	ValueAmount        *ValueAmountType
+	ValueAmount        *AmountType1
 	ValueQuantity      *ValueQuantityType
 	EvidenceSupplied   []EvidenceSuppliedType
 	ValidityPeriod     *PeriodType
@@ -3448,8 +2297,8 @@ type EvidenceSuppliedType struct {
 	ID *IDType
 }
 type CompletedTaskType struct {
-	AnnualAverageAmount *AnnualAverageAmountType
-	TotalTaskAmount     *TotalTaskAmountType
+	AnnualAverageAmount *AmountType1
+	TotalTaskAmount     *AmountType1
 	//Burayı bir kontrol et
 	//PartyCapacityAmountType
 	Description            []DescriptionType
@@ -3459,22 +2308,22 @@ type CompletedTaskType struct {
 }
 type DeclarationType struct {
 	Name                []NameType1
-	DeclarationTypeCode *DeclarationTypeCodeType
+	DeclarationTypeCode *CodeType1
 	Description         []DescriptionType
 	EvidenceSupplied    []EvidenceSuppliedType
 }
 type EconomicOperatorRoleType struct {
-	RoleCode        *RoleCodeType
+	RoleCode        *CodeType1
 	RoleDescription []RoleDescriptionType
 }
 type TransportationServiceType struct {
-	TransportServiceCode *TransportServiceCodeType
-	//Burayı bir kontrol er
-	//TariffClassCodeType
+	TransportServiceCode *CodeType1
+
+	TariffClassCode                          *CodeType1
 	Priority                                 *PriorityType
-	FreightRateClassCode                     *FreightRateClassCodeType
+	FreightRateClassCode                     *CodeType1
 	TransportationServiceDescription         []TransportationServiceDescriptionType
-	TransportationServiceDetailsURI          *TransportationServiceDetailsURIType
+	TransportationServiceDetailsURI          *IdentifierType1
 	NominationDate                           *NominationDateType
 	NominationTime                           *NominationTimeType
 	Name                                     *NameType1
@@ -3495,17 +2344,17 @@ type TransportationServiceType struct {
 }
 type ShipmentStageType struct {
 	ID                               *IDType
-	TransportModeCode                *TransportModeCodeType
-	TransportMeansTypeCode           *TransportMeansTypeCodeType
-	TransitDirectionCode             *TransitDirectionCodeType
+	TransportModeCode                *CodeType1
+	TransportMeansTypeCode           *CodeType1
+	TransitDirectionCode             *CodeType1
 	PreCarriageIndicator             *PreCarriageIndicatorType
 	OnCarriageIndicator              *OnCarriageIndicatorType
 	EstimatedDeliveryDate            *EstimatedDeliveryDateType
 	EstimatedDeliveryTime            *EstimatedDeliveryTimeType
 	RequiredDeliveryDate             *RequiredDeliveryDateType
 	RequiredDeliveryTime             *RequiredDeliveryTimeType
-	LoadingSequenceID                *LoadingSequenceIDType
-	SuccessiveSequenceID             *SuccessiveSequenceIDType
+	LoadingSequenceID                *IdentifierType1
+	SuccessiveSequenceID             *IdentifierType1
 	Instructions                     []InstructionsType
 	DemurrageInstructions            []DemurrageInstructionsType
 	CrewQuantity                     *CrewQuantityType
@@ -3557,19 +2406,19 @@ type ShipmentStageType struct {
 	ShipsSurgeonPerson               *PersonType
 }
 type EnvironmentalEmissionType struct {
-	EnvironmentalEmissionTypeCode *EnvironmentalEmissionTypeCodeType
+	EnvironmentalEmissionTypeCode *CodeType1
 	ValueMeasure                  *ValueMeasureType
 	Description                   []DescriptionType
 	EmissionCalculationMethod     []EmissionCalculationMethodType
 }
 type EmissionCalculationMethodType struct {
-	CalculationMethodCode   *CalculationMethodCodeType
-	FullnessIndicationCode  *FullnessIndicationCodeType
+	CalculationMethodCode   *CodeType1
+	FullnessIndicationCode  *CodeType1
 	MeasurementFromLocation *LocationType1
 	MeasurementToLocation   *LocationType1
 }
 type ServiceFrequencyType struct {
-	WeekDayCode *WeekDayCodeType
+	WeekDayCode *CodeType1
 }
 type AddressLineType struct {
 	Line *LineType
@@ -3579,27 +2428,27 @@ type SubcontractTermsType struct {
 	UnknownPriceIndicator        *UnknownPriceIndicatorType
 	Description                  []DescriptionType
 	Amount                       *AmountType2
-	SubcontractingConditionsCode *SubcontractingConditionsCodeType
+	SubcontractingConditionsCode *CodeType1
 	MaximumPercent               *MaximumPercentType
 	MinimumPercent               *MinimumPercentType
 }
 type LineItemType struct {
 	ID                        *IDType
-	SalesOrderID              *SalesOrderIDType
+	SalesOrderID              *IdentifierType1
 	UUID                      *UUIDType
 	Note                      []NoteType
 	LineStatusCode            *LineStatusCodeType
 	Quantity                  *QuantityType2
-	LineExtensionAmount       *LineExtensionAmountType
-	TotalTaxAmount            *TotalTaxAmountType
+	LineExtensionAmount       *AmountType1
+	TotalTaxAmount            *AmountType1
 	MinimumQuantity           *MinimumQuantityType
 	MaximumQuantity           *MaximumQuantityType
 	MinimumBackorderQuantity  *MinimumBackorderQuantityType
 	MaximumBackorderQuantity  *MaximumBackorderQuantityType
-	InspectionMethodCode      *InspectionMethodCodeType
+	InspectionMethodCode      *CodeType1
 	PartialDeliveryIndicator  *PartialDeliveryIndicatorType
 	BackOrderAllowedIndicator *BackOrderAllowedIndicatorType
-	AccountingCostCode        *AccountingCostCodeType
+	AccountingCostCode        *CodeType1
 	AccountingCost            *AccountingCostType
 	WarrantyInformation       []WarrantyInformationType
 	Delivery                  []DeliveryType
@@ -3663,7 +2512,7 @@ type AppealTermsType struct {
 type RegulationType struct {
 	Name           *NameType1
 	LegalReference *LegalReferenceType
-	OntologyURI    *OntologyURIType
+	OntologyURI    *IdentifierType1
 }
 type AuctionTermsType struct {
 	AuctionConstraintIndicator  *AuctionConstraintIndicatorType
@@ -3672,14 +2521,14 @@ type AuctionTermsType struct {
 	ProcessDescription          []ProcessDescriptionType
 	ConditionsDescription       []ConditionsDescriptionType
 	ElectronicDeviceDescription []ElectronicDeviceDescriptionType
-	AuctionURI                  *AuctionURIType
+	AuctionURI                  *IdentifierType1
 }
 type TenderedProjectType struct {
-	VariantID                 *VariantIDType
-	FeeAmount                 *FeeAmountType
+	VariantID                 *IdentifierType1
+	FeeAmount                 *AmountType1
 	FeeDescription            []FeeDescriptionType
-	TenderEnvelopeID          *TenderEnvelopeIDType
-	TenderEnvelopeTypeCode    *TenderEnvelopeTypeCodeType
+	TenderEnvelopeID          *IdentifierType1
+	TenderEnvelopeTypeCode    *CodeType1
 	ProcurementProjectLot     *ProcurementProjectLotType
 	EvidenceDocumentReference []DocumentReferenceType
 	TaxTotal                  []TaxTotalType
@@ -3693,23 +2542,23 @@ type ProcurementProjectLotType struct {
 	ProcurementProject *ProcurementProjectType
 }
 type TenderingTermsType struct {
-	AwardingMethodTypeCode                    *AwardingMethodTypeCodeType
-	PriceEvaluationCode                       *PriceEvaluationCodeType
+	AwardingMethodTypeCode                    *CodeType1
+	PriceEvaluationCode                       *CodeType1
 	MaximumVariantQuantity                    *MaximumVariantQuantityType
 	VariantConstraintIndicator                *VariantConstraintIndicatorType
 	AcceptedVariantsDescription               []AcceptedVariantsDescriptionType
 	PriceRevisionFormulaDescription           []PriceRevisionFormulaDescriptionType
-	FundingProgramCode                        *FundingProgramCodeType
+	FundingProgramCode                        *CodeType1
 	FundingProgram                            []FundingProgramType
-	MaximumAdvertisementAmount                *MaximumAdvertisementAmountType
+	MaximumAdvertisementAmount                *AmountType1
 	Note                                      []NoteType
-	PaymentFrequencyCode                      *PaymentFrequencyCodeType
-	EconomicOperatorRegistryURI               *EconomicOperatorRegistryURIType
+	PaymentFrequencyCode                      *CodeType1
+	EconomicOperatorRegistryURI               *IdentifierType1
 	RequiredCurriculaIndicator                *RequiredCurriculaIndicatorType
 	OtherConditionsIndicator                  *OtherConditionsIndicatorType
 	AdditionalConditions                      []AdditionalConditionsType
 	LatestSecurityClearanceDate               *LatestSecurityClearanceDateType
-	DocumentationFeeAmount                    *DocumentationFeeAmountType
+	DocumentationFeeAmount                    *AmountType1
 	PenaltyClause                             []ClauseType
 	RequiredFinancialGuarantee                []FinancialGuaranteeType
 	ProcurementLegislationDocumentReference   *DocumentReferenceType
@@ -3742,14 +2591,14 @@ type ClauseType struct {
 	Content []ContentType
 }
 type FinancialGuaranteeType struct {
-	GuaranteeTypeCode  *GuaranteeTypeCodeType
+	GuaranteeTypeCode  *CodeType1
 	Description        []DescriptionType
-	LiabilityAmount    *LiabilityAmountType
+	LiabilityAmount    *AmountType1
 	AmountRate         *AmountRateType
 	ConstitutionPeriod *PeriodType
 }
 type TendererQualificationRequestType struct {
-	CompanyLegalFormCode                 *CompanyLegalFormCodeType
+	CompanyLegalFormCode                 *CodeType1
 	CompanyLegalForm                     *CompanyLegalFormType
 	PersonalSituation                    []PersonalSituationType
 	OperatingYearsQuantity               *OperatingYearsQuantityType
@@ -3762,18 +2611,18 @@ type TendererQualificationRequestType struct {
 	EconomicOperatorRole                 []EconomicOperatorRoleType
 }
 type EvaluationCriterionType struct {
-	EvaluationCriterionTypeCode *EvaluationCriterionTypeCodeType
+	EvaluationCriterionTypeCode *CodeType1
 	Description                 []DescriptionType
-	ThresholdAmount             *ThresholdAmountType
+	ThresholdAmount             *AmountType1
 	ThresholdQuantity           *ThresholdQuantityType
-	ExpressionCode              *ExpressionCodeType
+	ExpressionCode              *CodeType1
 	Expression                  []ExpressionType
 	DurationPeriod              *PeriodType
 	SuggestedEvidence           []EvidenceType
 }
 type EvidenceType struct {
 	ID                   *IDType
-	EvidenceTypeCode     *EvidenceTypeCodeType
+	EvidenceTypeCode     *CodeType1
 	Description          []DescriptionType
 	CandidateStatement   []CandidateStatementType
 	EvidenceIssuingParty *PartyType
@@ -3783,20 +2632,20 @@ type EvidenceType struct {
 type LanguageType struct {
 	ID         *IDType
 	Name       *NameType1
-	LocaleCode *LocaleCodeType
+	LocaleCode *CodeType1
 }
 type TendererRequirementType struct {
 	Name                        []NameType1
-	TendererRequirementTypeCode *TendererRequirementTypeCodeType
+	TendererRequirementTypeCode *CodeType1
 	Description                 []DescriptionType
 	LegalReference              *LegalReferenceType
 	SuggestedEvidence           []EvidenceType
 }
 type TenderPreparationType struct {
-	TenderEnvelopeID          *TenderEnvelopeIDType
-	TenderEnvelopeTypeCode    *TenderEnvelopeTypeCodeType
+	TenderEnvelopeID          *IdentifierType1
+	TenderEnvelopeTypeCode    *CodeType1
 	Description               []DescriptionType
-	OpenTenderID              *OpenTenderIDType
+	OpenTenderID              *IdentifierType1
 	ProcurementProjectLot     []ProcurementProjectLotType
 	DocumentTenderRequirement []TenderRequirementType
 }
@@ -3807,11 +2656,11 @@ type TenderRequirementType struct {
 }
 type ContractExecutionRequirementType struct {
 	Name                     []NameType1
-	ExecutionRequirementCode *ExecutionRequirementCodeType
+	ExecutionRequirementCode *CodeType1
 	Description              []DescriptionType
 }
 type AwardingTermsType struct {
-	WeightingAlgorithmCode        *WeightingAlgorithmCodeType
+	WeightingAlgorithmCode        *CodeType1
 	Description                   []DescriptionType
 	TechnicalCommitteeDescription []TechnicalCommitteeDescriptionType
 	LowTendersDescription         []LowTendersDescriptionType
@@ -3825,22 +2674,22 @@ type AwardingTermsType struct {
 }
 type AwardingCriterionType struct {
 	ID                           *IDType
-	AwardingCriterionTypeCode    *AwardingCriterionTypeCodeType
+	AwardingCriterionTypeCode    *CodeType1
 	Description                  []DescriptionType
 	WeightNumeric                *WeightNumericType
 	Weight                       []WeightType
 	CalculationExpression        []CalculationExpressionType
-	CalculationExpressionCode    *CalculationExpressionCodeType
+	CalculationExpressionCode    *CodeType1
 	MinimumQuantity              *MinimumQuantityType
 	MaximumQuantity              *MaximumQuantityType
-	MinimumAmount                *MinimumAmountType
-	MaximumAmount                *MaximumAmountType
+	MinimumAmount                *AmountType1
+	MaximumAmount                *AmountType1
 	MinimumImprovementBid        []MinimumImprovementBidType
 	SubordinateAwardingCriterion []AwardingCriterionType
 }
 type BudgetAccountLineType struct {
 	ID            *IDType
-	TotalAmount   *TotalAmountType
+	TotalAmount   *AmountType1
 	BudgetAccount []BudgetAccountType
 }
 type BudgetAccountType struct {
@@ -3852,10 +2701,10 @@ type ProcurementProjectType struct {
 	ID                                *IDType
 	Name                              []NameType1
 	Description                       []DescriptionType
-	ProcurementTypeCode               *ProcurementTypeCodeType
-	ProcurementSubTypeCode            *ProcurementSubTypeCodeType
-	QualityControlCode                *QualityControlCodeType
-	RequiredFeeAmount                 *RequiredFeeAmountType
+	ProcurementTypeCode               *CodeType1
+	ProcurementSubTypeCode            *CodeType1
+	QualityControlCode                *CodeType1
+	RequiredFeeAmount                 *AmountType1
 	FeeDescription                    []FeeDescriptionType
 	RequestedDeliveryDate             *RequestedDeliveryDateType
 	EstimatedOverallContractQuantity  *EstimatedOverallContractQuantityType
@@ -3869,13 +2718,13 @@ type ProcurementProjectType struct {
 	RequestForTenderLine              []RequestForTenderLineType
 }
 type RequestedTenderTotalType struct {
-	EstimatedOverallContractAmount  *EstimatedOverallContractAmountType
-	TotalAmount                     *TotalAmountType
+	EstimatedOverallContractAmount  *AmountType1
+	TotalAmount                     *AmountType1
 	TaxIncludedIndicator            *TaxIncludedIndicatorType
-	MinimumAmount                   *MinimumAmountType
-	MaximumAmount                   *MaximumAmountType
+	MinimumAmount                   *AmountType1
+	MaximumAmount                   *AmountType1
 	MonetaryScope                   []MonetaryScopeType
-	AverageSubsequentContractAmount *AverageSubsequentContractAmountType
+	AverageSubsequentContractAmount *AmountType1
 	ApplicableTaxCategory           []TaxCategoryType
 }
 type ContractExtensionType struct {
@@ -3897,9 +2746,9 @@ type RequestForTenderLineType struct {
 	MinimumQuantity              *MinimumQuantityType
 	MaximumQuantity              *MaximumQuantityType
 	TaxIncludedIndicator         *TaxIncludedIndicatorType
-	MinimumAmount                *MinimumAmountType
-	MaximumAmount                *MaximumAmountType
-	EstimatedAmount              *EstimatedAmountType
+	MinimumAmount                *AmountType1
+	MaximumAmount                *AmountType1
+	EstimatedAmount              *AmountType1
 	DocumentReference            []DocumentReferenceType
 	DeliveryPeriod               []PeriodType
 	RequiredItemLocationQuantity []ItemLocationQuantityType
@@ -3911,15 +2760,15 @@ type TenderLineType struct {
 	ID                              *IDType
 	Note                            []NoteType
 	Quantity                        *QuantityType2
-	LineExtensionAmount             *LineExtensionAmountType
-	TotalTaxAmount                  *TotalTaxAmountType
+	LineExtensionAmount             *AmountType1
+	TotalTaxAmount                  *AmountType1
 	OrderableUnit                   *OrderableUnitType
 	ContentUnitQuantity             *ContentUnitQuantityType
 	OrderQuantityIncrementNumeric   *OrderQuantityIncrementNumericType
 	MinimumOrderQuantity            *MinimumOrderQuantityType
 	MaximumOrderQuantity            *MaximumOrderQuantityType
 	WarrantyInformation             []WarrantyInformationType
-	PackLevelCode                   *PackLevelCodeType
+	PackLevelCode                   *CodeType1
 	DocumentReference               []DocumentReferenceType
 	Item                            *ItemType
 	OfferedItemLocationQuantity     []ItemLocationQuantityType
@@ -3932,7 +2781,7 @@ type TenderLineType struct {
 }
 type AwardingCriterionResponseType struct {
 	CallForTendersDocumentReference      *IDType
-	AwardingCriterionID                  *AwardingCriterionIDType
+	AwardingCriterionID                  *IdentifierType1
 	AwardingCriterionDescription         []AwardingCriterionDescriptionType
 	Description                          []DescriptionType
 	Quantity                             *QuantityType2
@@ -3942,20 +2791,20 @@ type AwardingCriterionResponseType struct {
 type DutyType1 struct {
 	Amount      *AmountType2
 	Duty        *DutyType
-	DutyCode    *DutyCodeType
+	DutyCode    *CodeType1
 	TaxCategory *TaxCategoryType
 }
 type CardAccountType struct {
-	PrimaryAccountNumberID *PrimaryAccountNumberIDType
-	NetworkID              *NetworkIDType
-	CardTypeCode           *CardTypeCodeType
+	PrimaryAccountNumberID *IdentifierType1
+	NetworkID              *IdentifierType1
+	CardTypeCode           *CodeType1
 	ValidityStartDate      *ValidityStartDateType
 	ExpiryDate             *ExpiryDateType
-	IssuerID               *IssuerIDType
-	IssueNumberID          *IssueNumberIDType
-	CV2ID                  *CV2IDType
-	CardChipCode           *CardChipCodeType
-	ChipApplicationID      *ChipApplicationIDType
+	IssuerID               *IdentifierType1
+	IssueNumberID          *IdentifierType1
+	CV2ID                  *IdentifierType1
+	CardChipCode           *CodeType1
+	ChipApplicationID      *IdentifierType1
 	HolderName             *HolderNameType
 }
 type CatalogueItemSpecificationUpdateLineType struct {
@@ -3966,8 +2815,8 @@ type CatalogueItemSpecificationUpdateLineType struct {
 }
 type CatalogueLineType struct {
 	ID                            *IDType
-	ActionCode                    *ActionCodeType
-	LifeCycleStatusCode           *LifeCycleStatusCodeType
+	ActionCode                    *CodeType1
+	LifeCycleStatusCode           *CodeType1
 	ContractSubdivision           *ContractSubdivisionType
 	Note                          []NoteType
 	OrderableIndicator            *OrderableIndicatorType
@@ -3977,7 +2826,7 @@ type CatalogueLineType struct {
 	MinimumOrderQuantity          *MinimumOrderQuantityType
 	MaximumOrderQuantity          *MaximumOrderQuantityType
 	WarrantyInformation           []WarrantyInformationType
-	PackLevelCode                 *PackLevelCodeType
+	PackLevelCode                 *CodeType1
 	ContractorCustomerParty       *CustomerPartyType
 	SellerSupplierParty           *SupplierPartyType
 	WarrantyParty                 *PartyType
@@ -4017,8 +2866,8 @@ type CatalogueReferenceType struct {
 	RevisionTime      *RevisionTimeType
 	Note              []NoteType
 	Description       []DescriptionType
-	VersionID         *VersionIDType
-	PreviousVersionID *PreviousVersionIDType
+	VersionID         *IdentifierType1
+	PreviousVersionID *IdentifierType1
 }
 type CatalogueRequestLineType struct {
 	ID                           *IDType
@@ -4030,7 +2879,7 @@ type CatalogueRequestLineType struct {
 }
 type CertificateType struct {
 	ID                  *IDType
-	CertificateTypeCode *CertificateTypeCodeType
+	CertificateTypeCode *CodeType1
 	CertificateType1    *CertificateTypeType
 	Remarks             []RemarksType
 	IssuerParty         *PartyType
@@ -4038,11 +2887,11 @@ type CertificateType struct {
 	Signature           []SignatureType
 }
 type CertificateOfOriginApplicationType struct {
-	ReferenceID                 *ReferenceIDType
+	ReferenceID                 *IdentifierType1
 	CertificateType             *CertificateTypeType
-	ApplicationStatusCode       *ApplicationStatusCodeType
-	OriginalJobID               *OriginalJobIDType
-	PreviousJobID               *PreviousJobIDType
+	ApplicationStatusCode       *CodeType1
+	OriginalJobID               *IdentifierType1
+	PreviousJobID               *IdentifierType1
 	Remarks                     []RemarksType
 	Shipment                    *ShipmentType
 	EndorserParty               []EndorserPartyType
@@ -4056,7 +2905,7 @@ type CertificateOfOriginApplicationType struct {
 	Signature                   []SignatureType
 }
 type EndorserPartyType struct {
-	RoleCode         *RoleCodeType
+	RoleCode         *CodeType1
 	SequenceNumeric  *SequenceNumericType
 	Party            *PartyType
 	SignatoryContact *ContactType
@@ -4068,19 +2917,19 @@ type DocumentDistributionType struct {
 }
 type ConsignmentType struct {
 	ID                          *IDType
-	CarrierAssignedID           *CarrierAssignedIDType
-	ConsigneeAssignedID         *ConsigneeAssignedIDType
-	ConsignorAssignedID         *ConsignorAssignedIDType
-	FreightForwarderAssignedID  *FreightForwarderAssignedIDType
-	BrokerAssignedID            *BrokerAssignedIDType
-	ContractedCarrierAssignedID *ContractedCarrierAssignedIDType
-	PerformingCarrierAssignedID *PerformingCarrierAssignedIDType
+	CarrierAssignedID           *IdentifierType1
+	ConsigneeAssignedID         *IdentifierType1
+	ConsignorAssignedID         *IdentifierType1
+	FreightForwarderAssignedID  *IdentifierType1
+	BrokerAssignedID            *IdentifierType1
+	ContractedCarrierAssignedID *IdentifierType1
+	PerformingCarrierAssignedID *IdentifierType1
 	SummaryDescription          []SummaryDescriptionType
-	TotalInvoiceAmount          *TotalInvoiceAmountType
-	DeclaredCustomsValueAmount  *DeclaredCustomsValueAmountType
+	TotalInvoiceAmount          *AmountType1
+	DeclaredCustomsValueAmount  *AmountType1
 	TariffDescription           []TariffDescriptionType
-	TariffCode                  *TariffCodeType
-	InsurancePremiumAmount      *InsurancePremiumAmountType
+	TariffCode                  *CodeType1
+	InsurancePremiumAmount      *AmountType1
 	GrossWeightMeasure          *GrossWeightMeasureType
 	NetWeightMeasure            *NetWeightMeasureType
 	NetNetWeightMeasure         *NetNetWeightMeasureType
@@ -4103,24 +2952,24 @@ type ConsignmentType struct {
 	CustomsClearanceServiceInstructions   []CustomsClearanceServiceInstructionsType
 	ForwarderServiceInstructions          []ForwarderServiceInstructionsType
 	SpecialServiceInstructions            []SpecialServiceInstructionsType
-	SequenceID                            *SequenceIDType
-	ShippingPriorityLevelCode             *ShippingPriorityLevelCodeType
-	HandlingCode                          *HandlingCodeType
+	SequenceID                            *IdentifierType1
+	ShippingPriorityLevelCode             *CodeType1
+	HandlingCode                          *CodeType1
 	HandlingInstructions                  []HandlingInstructionsType
 	Information                           []InformationType
 	TotalGoodsItemQuantity                *TotalGoodsItemQuantityType
 	TotalTransportHandlingUnitQuantity    *TotalTransportHandlingUnitQuantityType
-	InsuranceValueAmount                  *InsuranceValueAmountType
-	DeclaredForCarriageValueAmount        *DeclaredForCarriageValueAmountType
-	DeclaredStatisticsValueAmount         *DeclaredStatisticsValueAmountType
-	FreeOnBoardValueAmount                *FreeOnBoardValueAmountType
+	InsuranceValueAmount                  *AmountType1
+	DeclaredForCarriageValueAmount        *AmountType1
+	DeclaredStatisticsValueAmount         *AmountType1
+	FreeOnBoardValueAmount                *AmountType1
 	SpecialInstructions                   []SpecialInstructionsType
 	SplitConsignmentIndicator             *SplitConsignmentIndicatorType
 	DeliveryInstructions                  []DeliveryInstructionsType
 	ConsignmentQuantity                   *ConsignmentQuantityType
 	ConsolidatableIndicator               *ConsolidatableIndicatorType
 	HaulageInstructions                   []HaulageInstructionsType
-	LoadingSequenceID                     *LoadingSequenceIDType
+	LoadingSequenceID                     *IdentifierType1
 	ChildConsignmentQuantity              *ChildConsignmentQuantityType
 	TotalPackagesQuantity                 *TotalPackagesQuantityType
 	ConsolidatedShipment                  []ShipmentType
@@ -4175,10 +3024,10 @@ type ContractType struct {
 	IssueTime                 *IssueTimeType
 	NominationDate            *NominationDateType
 	NominationTime            *NominationTimeType
-	ContractTypeCode          *ContractTypeCodeType
+	ContractTypeCode          *CodeType1
 	ContractType1             *ContractTypeType
 	Note                      []NoteType
-	VersionID                 *VersionIDType
+	VersionID                 *IdentifierType1
 	Description               []DescriptionType
 	ValidityPeriod            *PeriodType
 	ContractDocumentReference []DocumentReferenceType
@@ -4187,14 +3036,14 @@ type ContractType struct {
 }
 type PaymentType struct {
 	ID            *IDType
-	PaidAmount    *PaidAmountType
+	PaidAmount    *AmountType1
 	ReceivedDate  *ReceivedDateType
 	PaidDate      *PaidDateType
 	PaidTime      *PaidTimeType
-	InstructionID *InstructionIDType
+	InstructionID *IdentifierType1
 }
 type ConsumptionType struct {
-	UtilityStatementTypeCode *UtilityStatementTypeCodeType
+	UtilityStatementTypeCode *CodeType1
 	MainPeriod               *PeriodType
 	AllowanceCharge          []AllowanceChargeType
 	TaxTotal                 []TaxTotalType
@@ -4211,17 +3060,17 @@ type EnergyWaterSupplyType struct {
 type ConsumptionReportType struct {
 	ID                         *IDType
 	ConsumptionType            *ConsumptionTypeType
-	ConsumptionTypeCode        *ConsumptionTypeCodeType
+	ConsumptionTypeCode        *CodeType1
 	Description                []DescriptionType
 	TotalConsumedQuantity      *TotalConsumedQuantityType
 	BasicConsumedQuantity      *BasicConsumedQuantityType
 	ResidentOccupantsNumeric   *ResidentOccupantsNumericType
-	ConsumersEnergyLevelCode   *ConsumersEnergyLevelCodeType
+	ConsumersEnergyLevelCode   *CodeType1
 	ConsumersEnergyLevel       *ConsumersEnergyLevelType
 	ResidenceType              *ResidenceTypeType
-	ResidenceTypeCode          *ResidenceTypeCodeType
+	ResidenceTypeCode          *CodeType1
 	HeatingType                *HeatingTypeType
-	HeatingTypeCode            *HeatingTypeCodeType
+	HeatingTypeCode            *CodeType1
 	Period                     *PeriodType
 	GuidanceDocumentReference  *DocumentReferenceType
 	DocumentReference          *DocumentReferenceType
@@ -4229,9 +3078,9 @@ type ConsumptionReportType struct {
 	ConsumptionHistory         []ConsumptionHistoryType
 }
 type ConsumptionReportReferenceType struct {
-	ConsumptionReportID   *ConsumptionReportIDType
+	ConsumptionReportID   *IdentifierType1
 	ConsumptionType       *ConsumptionTypeType
-	ConsumptionTypeCode   *ConsumptionTypeCodeType
+	ConsumptionTypeCode   *CodeType1
 	TotalConsumedQuantity *TotalConsumedQuantityType
 	Period                *PeriodType
 }
@@ -4239,48 +3088,48 @@ type ConsumptionHistoryType struct {
 	MeterNumber          *MeterNumberType
 	Quantity             *QuantityType2
 	Amount               *AmountType2
-	ConsumptionLevelCode *ConsumptionLevelCodeType
+	ConsumptionLevelCode *CodeType1
 	ConsumptionLevel     *ConsumptionLevelType
 	Description          []DescriptionType
 	Period               *PeriodType
 }
 type EnergyTaxReportType struct {
-	TaxEnergyAmount          *TaxEnergyAmountType
-	TaxEnergyOnAccountAmount *TaxEnergyOnAccountAmountType
-	TaxEnergyBalanceAmount   *TaxEnergyBalanceAmountType
+	TaxEnergyAmount          *AmountType1
+	TaxEnergyOnAccountAmount *AmountType1
+	TaxEnergyBalanceAmount   *AmountType1
 	TaxScheme                *TaxSchemeType
 }
 type ConsumptionAverageType struct {
-	AverageAmount *AverageAmountType
+	AverageAmount *AmountType1
 	Description   []DescriptionType
 }
 type ConsumptionCorrectionType struct {
 	CorrectionType                         *CorrectionTypeType
-	CorrectionTypeCode                     *CorrectionTypeCodeType
+	CorrectionTypeCode                     *CodeType1
 	MeterNumber                            *MeterNumberType
 	GasPressureQuantity                    *GasPressureQuantityType
 	ActualTemperatureReductionQuantity     *ActualTemperatureReductionQuantityType
 	NormalTemperatureReductionQuantity     *NormalTemperatureReductionQuantityType
 	DifferenceTemperatureReductionQuantity *DifferenceTemperatureReductionQuantityType
 	Description                            []DescriptionType
-	CorrectionUnitAmount                   *CorrectionUnitAmountType
+	CorrectionUnitAmount                   *AmountType1
 	ConsumptionEnergyQuantity              *ConsumptionEnergyQuantityType
 	ConsumptionWaterQuantity               *ConsumptionWaterQuantityType
-	CorrectionAmount                       *CorrectionAmountType
+	CorrectionAmount                       *AmountType1
 }
 type TelecommunicationsSupplyType struct {
 	TelecommunicationsSupplyType1    *TelecommunicationsSupplyTypeType
-	TelecommunicationsSupplyTypeCode *TelecommunicationsSupplyTypeCodeType
-	PrivacyCode                      *PrivacyCodeType
+	TelecommunicationsSupplyTypeCode *CodeType1
+	PrivacyCode                      *CodeType1
 	Description                      []DescriptionType
-	TotalAmount                      *TotalAmountType
+	TotalAmount                      *AmountType1
 	TelecommunicationsSupplyLine     []TelecommunicationsSupplyLineType
 }
 type TelecommunicationsSupplyLineType struct {
 	ID                        *IDType
 	PhoneNumber               *PhoneNumberType
 	Description               []DescriptionType
-	LineExtensionAmount       *LineExtensionAmountType
+	LineExtensionAmount       *AmountType1
 	ExchangeRate              []ExchangeRateType
 	AllowanceCharge           []AllowanceChargeType
 	TaxTotal                  []TaxTotalType
@@ -4292,15 +3141,15 @@ type TelecommunicationsServiceType struct {
 	CallTime                              *CallTimeType
 	ServiceNumberCalled                   *ServiceNumberCalledType
 	TelecommunicationsServiceCategory     *TelecommunicationsServiceCategoryType
-	TelecommunicationsServiceCategoryCode *TelecommunicationsServiceCategoryCodeType
+	TelecommunicationsServiceCategoryCode *CodeType1
 	MovieTitle                            *MovieTitleType
 	RoamingPartnerName                    *RoamingPartnerNameType
 	PayPerView                            *PayPerViewType
 	Quantity                              *QuantityType2
 	TelecommunicationsServiceCall         *TelecommunicationsServiceCallType
-	TelecommunicationsServiceCallCode     *TelecommunicationsServiceCallCodeType
-	CallBaseAmount                        *CallBaseAmountType
-	CallExtensionAmount                   *CallExtensionAmountType
+	TelecommunicationsServiceCallCode     *CodeType1
+	CallBaseAmount                        *AmountType1
+	CallExtensionAmount                   *AmountType1
 	Price                                 *PriceType
 	Country                               *CountryType
 	ExchangeRate                          []ExchangeRateType
@@ -4311,9 +3160,9 @@ type TelecommunicationsServiceType struct {
 }
 type ConsumptionLineType struct {
 	ID                            *IDType
-	ParentDocumentLineReferenceID *ParentDocumentLineReferenceIDType
+	ParentDocumentLineReferenceID *IdentifierType1
 	InvoicedQuantity              *InvoicedQuantityType
-	LineExtensionAmount           *LineExtensionAmountType
+	LineExtensionAmount           *AmountType1
 	Period                        *PeriodType
 	Delivery                      []DeliveryType
 	AllowanceCharge               []AllowanceChargeType
@@ -4324,18 +3173,18 @@ type ConsumptionLineType struct {
 }
 type UtilityItemType struct {
 	ID                    *IDType
-	SubscriberID          *SubscriberIDType
+	SubscriberID          *IdentifierType1
 	SubscriberType        *SubscriberTypeType
-	SubscriberTypeCode    *SubscriberTypeCodeType
+	SubscriberTypeCode    *CodeType1
 	Description           []DescriptionType
 	PackQuantity          *PackQuantityType
 	PackSizeNumeric       *PackSizeNumericType
 	ConsumptionType       *ConsumptionTypeType
-	ConsumptionTypeCode   *ConsumptionTypeCodeType
+	ConsumptionTypeCode   *CodeType1
 	CurrentChargeType     *CurrentChargeTypeType
-	CurrentChargeTypeCode *CurrentChargeTypeCodeType
+	CurrentChargeTypeCode *CodeType1
 	OneTimeChargeType     *OneTimeChargeTypeType
-	OneTimeChargeTypeCode *OneTimeChargeTypeCodeType
+	OneTimeChargeTypeCode *CodeType1
 	TaxCategory           *TaxCategoryType
 	Contract              *ContractType
 }
@@ -4346,7 +3195,7 @@ type UnstructuredPriceType struct {
 type ConsumptionPointType struct {
 	ID             *IDType
 	Description    []DescriptionType
-	SubscriberID   *SubscriberIDType
+	SubscriberID   *IdentifierType1
 	SubscriberType *SubscriberTypeType
 	//Burayı kontrol et
 	//SubscriberType         SubscriberTypeCodeType
@@ -4356,7 +3205,7 @@ type ConsumptionPointType struct {
 	UtilityMeter           []MeterType
 }
 type WebSiteAccessType struct {
-	URI      *URIType
+	URI      *IdentifierType1
 	Password *PasswordType
 	Login    *LoginType
 }
@@ -4364,7 +3213,7 @@ type MeterType struct {
 	MeterNumber            *MeterNumberType
 	MeterName              *MeterNameType
 	MeterConstant          *MeterConstantType
-	MeterConstantCode      *MeterConstantCodeType
+	MeterConstantCode      *CodeType1
 	TotalDeliveredQuantity *TotalDeliveredQuantityType
 	MeterReading           []MeterReadingType
 	MeterProperty          []MeterPropertyType
@@ -4372,52 +3221,52 @@ type MeterType struct {
 type MeterReadingType struct {
 	ID                             *IDType
 	MeterReadingType1              *MeterReadingTypeType
-	MeterReadingTypeCode           *MeterReadingTypeCodeType
+	MeterReadingTypeCode           *CodeType1
 	PreviousMeterReadingDate       *PreviousMeterReadingDateType
 	PreviousMeterQuantity          *PreviousMeterQuantityType
 	LatestMeterReadingDate         *LatestMeterReadingDateType
 	LatestMeterQuantity            *LatestMeterQuantityType
 	PreviousMeterReadingMethod     *PreviousMeterReadingMethodType
-	PreviousMeterReadingMethodCode *PreviousMeterReadingMethodCodeType
+	PreviousMeterReadingMethodCode *CodeType1
 	LatestMeterReadingMethod       *LatestMeterReadingMethodType
-	LatestMeterReadingMethodCode   *LatestMeterReadingMethodCodeType
+	LatestMeterReadingMethodCode   *CodeType1
 	MeterReadingComments           []MeterReadingCommentsType
 	DeliveredQuantity              *DeliveredQuantityType
 }
 type MeterPropertyType struct {
 	Name           *NameType1
-	NameCode       *NameCodeType
+	NameCode       *CodeType1
 	Value          *ValueType
 	ValueQuantity  *ValueQuantityType
 	ValueQualifier []ValueQualifierType
 }
 type ContractingActivityType struct {
-	ActivityTypeCode *ActivityTypeCodeType
+	ActivityTypeCode *CodeType1
 	ActivityType     *ActivityTypeType
 }
 type ContractingPartyType struct {
-	BuyerProfileURI       *BuyerProfileURIType
+	BuyerProfileURI       *IdentifierType1
 	ContractingPartyType1 []ContractingPartyTypeType
 	ContractingActivity   []ContractingActivityType
 	Party                 *PartyType
 }
 type ContractingPartyTypeType struct {
-	PartyTypeCode *PartyTypeCodeType
+	PartyTypeCode *CodeType1
 	PartyType     *PartyTypeType
 }
 type CreditAccountType struct {
-	AccountID *AccountIDType
+	AccountID *IdentifierType1
 }
 type CreditNoteLineType struct {
 	ID                    *IDType
 	UUID                  *UUIDType
 	Note                  []NoteType
 	CreditedQuantity      *CreditedQuantityType
-	LineExtensionAmount   *LineExtensionAmountType
+	LineExtensionAmount   *AmountType1
 	TaxPointDate          *TaxPointDateType
-	AccountingCostCode    *AccountingCostCodeType
+	AccountingCostCode    *CodeType1
 	AccountingCost        *AccountingCostType
-	PaymentPurposeCode    *PaymentPurposeCodeType
+	PaymentPurposeCode    *CodeType1
 	FreeOfChargeIndicator *FreeOfChargeIndicatorType
 	InvoicePeriod         []PeriodType
 	OrderLineReference    []OrderLineReferenceType
@@ -4443,11 +3292,11 @@ type DebitNoteLineType struct {
 	UUID                  *UUIDType
 	Note                  []NoteType
 	DebitedQuantity       *DebitedQuantityType
-	LineExtensionAmount   *LineExtensionAmountType
+	LineExtensionAmount   *AmountType1
 	TaxPointDate          *TaxPointDateType
-	AccountingCostCode    *AccountingCostCodeType
+	AccountingCostCode    *CodeType1
 	AccountingCost        *AccountingCostType
-	PaymentPurposeCode    *PaymentPurposeCodeType
+	PaymentPurposeCode    *CodeType1
 	DiscrepancyResponse   []ResponseType
 	DespatchLineReference []LineReferenceType
 	ReceiptLineReference  []LineReferenceType
@@ -4485,17 +3334,17 @@ type EconomicOperatorShortListType struct {
 	PreSelectedParty      []PartyType
 }
 type EndorsementType struct {
-	DocumentID     *DocumentIDType
+	DocumentID     *IdentifierType1
 	ApprovalStatus *ApprovalStatusType
 	Remarks        []RemarksType
 	EndorserParty  *EndorserPartyType
 	Signature      []SignatureType
 }
 type EventType struct {
-	IdentificationID    *IdentificationIDType
+	IdentificationID    *IdentifierType1
 	OccurrenceDate      *OccurrenceDateType
 	OccurrenceTime      *OccurrenceTimeType
-	TypeCode            *TypeCodeType
+	TypeCode            *CodeType1
 	Description         []DescriptionType
 	CompletionIndicator *CompletionIndicatorType
 	CurrentStatus       []StatusType
@@ -4515,10 +3364,9 @@ type EventLineItemType struct {
 }
 type RetailPlannedImpactType struct {
 	Amount              *AmountType2
-	ForecastPurposeCode *ForecastPurposeCodeType
-	//Burayı kontrol et
-	//ForecastPurposeCode ForecastTypeCodeType
-	Period *PeriodType
+	ForecastPurposeCode *CodeType1
+	ForecastTypeCode    *CodeType1
+	Period              *PeriodType
 }
 type EventTacticType struct {
 	Comment                *CommentType
@@ -4527,56 +3375,56 @@ type EventTacticType struct {
 	Period                 *PeriodType
 }
 type EventTacticEnumerationType struct {
-	ConsumerIncentiveTacticTypeCode  *ConsumerIncentiveTacticTypeCodeType
-	DisplayTacticTypeCode            *DisplayTacticTypeCodeType
-	FeatureTacticTypeCode            *FeatureTacticTypeCodeType
-	TradeItemPackingLabelingTypeCode *TradeItemPackingLabelingTypeCodeType
+	ConsumerIncentiveTacticTypeCode  *CodeType1
+	DisplayTacticTypeCode            *CodeType1
+	FeatureTacticTypeCode            *CodeType1
+	TradeItemPackingLabelingTypeCode *CodeType1
 }
 type ExceptionCriteriaLineType struct {
 	ID                             *IDType
 	Note                           []NoteType
-	ThresholdValueComparisonCode   *ThresholdValueComparisonCodeType
+	ThresholdValueComparisonCode   *CodeType1
 	ThresholdQuantity              *ThresholdQuantityType
-	ExceptionStatusCode            *ExceptionStatusCodeType
-	CollaborationPriorityCode      *CollaborationPriorityCodeType
-	ExceptionResolutionCode        *ExceptionResolutionCodeType
-	SupplyChainActivityTypeCode    *SupplyChainActivityTypeCodeType
-	PerformanceMetricTypeCode      *PerformanceMetricTypeCodeType
+	ExceptionStatusCode            *CodeType1
+	CollaborationPriorityCode      *CodeType1
+	ExceptionResolutionCode        *CodeType1
+	SupplyChainActivityTypeCode    *CodeType1
+	PerformanceMetricTypeCode      *CodeType1
 	EffectivePeriod                *PeriodType
 	SupplyItem                     []ItemType
 	ForecastExceptionCriterionLine *ForecastExceptionCriterionLineType
 }
 type ForecastExceptionCriterionLineType struct {
-	ForecastPurposeCode      *ForecastPurposeCodeType
-	ForecastTypeCode         *ForecastTypeCodeType
-	ComparisonDataSourceCode *ComparisonDataSourceCodeType
-	DataSourceCode           *DataSourceCodeType
+	ForecastPurposeCode      *CodeType1
+	ForecastTypeCode         *CodeType1
+	ComparisonDataSourceCode *CodeType1
+	DataSourceCode           *CodeType1
 	TimeDeltaDaysQuantity    *TimeDeltaDaysQuantityType
 }
 type ExceptionNotificationLineType struct {
 	ID                          *IDType
 	Note                        []NoteType
 	Description                 []DescriptionType
-	ExceptionStatusCode         *ExceptionStatusCodeType
-	CollaborationPriorityCode   *CollaborationPriorityCodeType
-	ResolutionCode              *ResolutionCodeType
+	ExceptionStatusCode         *CodeType1
+	CollaborationPriorityCode   *CodeType1
+	ResolutionCode              *CodeType1
 	ComparedValueMeasure        *ComparedValueMeasureType
 	SourceValueMeasure          *SourceValueMeasureType
 	VarianceQuantity            *VarianceQuantityType
-	SupplyChainActivityTypeCode *SupplyChainActivityTypeCodeType
-	PerformanceMetricTypeCode   *PerformanceMetricTypeCodeType
+	SupplyChainActivityTypeCode *CodeType1
+	PerformanceMetricTypeCode   *CodeType1
 	ExceptionObservationPeriod  *PeriodType
 	DocumentReference           []DocumentReferenceType
 	ForecastException           *ForecastExceptionType
 	SupplyItem                  *ItemType
 }
 type ForecastExceptionType struct {
-	ForecastPurposeCode         *ForecastPurposeCodeType
-	ForecastTypeCode            *ForecastTypeCodeType
+	ForecastPurposeCode         *CodeType1
+	ForecastTypeCode            *CodeType1
 	IssueDate                   *IssueDateType
 	IssueTime                   *IssueTimeType
-	DataSourceCode              *DataSourceCodeType
-	ComparisonDataCode          *ComparisonDataCodeType
+	DataSourceCode              *CodeType1
+	ComparisonDataCode          *CodeType1
 	ComparisonForecastIssueTime *ComparisonForecastIssueTimeType
 	ComparisonForecastIssueDate *ComparisonForecastIssueDateType
 }
@@ -4593,10 +3441,10 @@ type ForecastRevisionLineType struct {
 	ID                      *IDType
 	Note                    []NoteType
 	Description             []DescriptionType
-	RevisedForecastLineID   *RevisedForecastLineIDType
+	RevisedForecastLineID   *IdentifierType1
 	SourceForecastIssueDate *SourceForecastIssueDateType
 	SourceForecastIssueTime *SourceForecastIssueTimeType
-	AdjustmentReasonCode    *AdjustmentReasonCodeType
+	AdjustmentReasonCode    *CodeType1
 	ForecastPeriod          *PeriodType
 	SalesItem               *SalesItemType
 }
@@ -4623,16 +3471,16 @@ type HazardousItemType struct {
 	PlacardNotation            *PlacardNotationType
 	PlacardEndorsement         *PlacardEndorsementType
 	AdditionalInformation      []AdditionalInformationType
-	UNDGCode                   *UNDGCodeType
-	EmergencyProceduresCode    *EmergencyProceduresCodeType
-	MedicalFirstAidGuideCode   *MedicalFirstAidGuideCodeType
+	UNDGCode                   *CodeType1
+	EmergencyProceduresCode    *CodeType1
+	MedicalFirstAidGuideCode   *CodeType1
 	TechnicalName              *TechnicalNameType
 	CategoryName               *CategoryNameType
-	HazardousCategoryCode      *HazardousCategoryCodeType
-	UpperOrangeHazardPlacardID *UpperOrangeHazardPlacardIDType
-	LowerOrangeHazardPlacardID *LowerOrangeHazardPlacardIDType
-	MarkingID                  *MarkingIDType
-	HazardClassID              *HazardClassIDType
+	HazardousCategoryCode      *CodeType1
+	UpperOrangeHazardPlacardID *IdentifierType1
+	LowerOrangeHazardPlacardID *IdentifierType1
+	MarkingID                  *IdentifierType1
+	HazardClassID              *IdentifierType1
 	NetWeightMeasure           *NetWeightMeasureType
 	NetVolumeMeasure           *NetVolumeMeasureType
 	Quantity                   *QuantityType2
@@ -4647,18 +3495,17 @@ type SecondaryHazardType struct {
 	ID                      *IDType
 	PlacardNotation         *PlacardNotationType
 	PlacardEndorsement      *PlacardEndorsementType
-	EmergencyProceduresCode *EmergencyProceduresCodeType
+	EmergencyProceduresCode *CodeType1
 	Extension               []ExtensionType
 }
 type ImmobilizedSecurityType struct {
-	//Burayı kontrol et
-	ImmobilizationCertificateIDType
-	SecurityID           *SecurityIDType
-	IssueDate            *IssueDateType
-	FaceValueAmount      *FaceValueAmountType
-	MarketValueAmount    *MarketValueAmountType
-	SharesNumberQuantity *SharesNumberQuantityType
-	IssuerParty          *PartyType
+	ImmobilizationCertificateID *IdentifierType1
+	SecurityID                  *IdentifierType1
+	IssueDate                   *IssueDateType
+	FaceValueAmount             *AmountType1
+	MarketValueAmount           *AmountType1
+	SharesNumberQuantity        *SharesNumberQuantityType
+	IssuerParty                 *PartyType
 }
 type InstructionForReturnsLineType struct {
 	ID                *IDType
@@ -4671,17 +3518,17 @@ type InventoryReportLineType struct {
 	ID                     *IDType
 	Note                   []NoteType
 	Quantity               *QuantityType2
-	InventoryValueAmount   *InventoryValueAmountType
+	InventoryValueAmount   *AmountType1
 	AvailabilityDate       *AvailabilityDateType
-	AvailabilityStatusCode *AvailabilityStatusCodeType
+	AvailabilityStatusCode *CodeType1
 	Item                   *ItemType
 	InventoryLocation      *LocationType1
 }
 type ItemInformationRequestLineType struct {
-	TimeFrequencyCode           *TimeFrequencyCodeType
-	SupplyChainActivityTypeCode *SupplyChainActivityTypeCodeType
-	ForecastTypeCode            *ForecastTypeCodeType
-	PerformanceMetricTypeCode   *PerformanceMetricTypeCodeType
+	TimeFrequencyCode           *CodeType1
+	SupplyChainActivityTypeCode *CodeType1
+	ForecastTypeCode            *CodeType1
+	PerformanceMetricTypeCode   *CodeType1
 	Period                      []PeriodType
 	SalesItem                   []SalesItemType
 }
@@ -4698,13 +3545,13 @@ type ItemManagementProfileType struct {
 	ItemLocationQuantity          *ItemLocationQuantityType
 }
 type LocationCoordinateType struct {
-	CoordinateSystemCode    *CoordinateSystemCodeType
+	CoordinateSystemCode    *CodeType1
 	LatitudeDegreesMeasure  *LatitudeDegreesMeasureType
 	LatitudeMinutesMeasure  *LatitudeMinutesMeasureType
-	LatitudeDirectionCode   *LatitudeDirectionCodeType
+	LatitudeDirectionCode   *CodeType1
 	LongitudeDegreesMeasure *LongitudeDegreesMeasureType
 	LongitudeMinutesMeasure *LongitudeMinutesMeasureType
-	LongitudeDirectionCode  *LongitudeDirectionCodeType
+	LongitudeDirectionCode  *CodeType1
 	AltitudeMeasure         *AltitudeMeasureType
 }
 type OnAccountPaymentType struct {
@@ -4713,11 +3560,11 @@ type OnAccountPaymentType struct {
 	PaymentTerms              []PaymentTermsType
 }
 type MiscellaneousEventType struct {
-	MiscellaneousEventTypeCode *MiscellaneousEventTypeCodeType
+	MiscellaneousEventTypeCode *CodeType1
 	EventLineItem              []EventLineItemType
 }
 type NotificationRequirementType struct {
-	NotificationTypeCode                 *NotificationTypeCodeType
+	NotificationTypeCode                 *CodeType1
 	PostEventNotificationDurationMeasure *PostEventNotificationDurationMeasureType
 	PreEventNotificationDurationMeasure  *PreEventNotificationDurationMeasureType
 	NotifyParty                          []PartyType
@@ -4725,7 +3572,7 @@ type NotificationRequirementType struct {
 	NotificationLocation                 []LocationType1
 }
 type OrderLineType struct {
-	SubstitutionStatusCode           *SubstitutionStatusCodeType
+	SubstitutionStatusCode           *CodeType1
 	Note                             []NoteType
 	LineItem                         *LineItemType
 	SellerProposedSubstituteLineItem []LineItemType
@@ -4738,10 +3585,10 @@ type OrderLineType struct {
 }
 type PaymentMandateType struct {
 	ID                                *IDType
-	MandateTypeCode                   *MandateTypeCodeType
+	MandateTypeCode                   *CodeType1
 	MaximumPaymentInstructionsNumeric *MaximumPaymentInstructionsNumericType
-	MaximumPaidAmount                 *MaximumPaidAmountType
-	SignatureID                       *SignatureIDType
+	MaximumPaidAmount                 *AmountType1
+	SignatureID                       *IdentifierType1
 	PayerParty                        *PartyType
 	PayerFinancialAccount             *FinancialAccountType
 	ValidityPeriod                    *PeriodType
@@ -4752,14 +3599,14 @@ type PerformanceDataLineType struct {
 	ID                        *IDType
 	Note                      []NoteType
 	PerformanceValueQuantity  *PerformanceValueQuantityType
-	PerformanceMetricTypeCode *PerformanceMetricTypeCodeType
+	PerformanceMetricTypeCode *CodeType1
 	Period                    *PeriodType
 	Item                      *ItemType
 }
 type PhysicalAttributeType struct {
-	AttributeID     *AttributeIDType
-	PositionCode    *PositionCodeType
-	DescriptionCode *DescriptionCodeType
+	AttributeID     *IdentifierType1
+	PositionCode    *CodeType1
+	DescriptionCode *CodeType1
 	Description     []DescriptionType
 }
 type PickupType struct {
@@ -4785,13 +3632,13 @@ type PowerOfAttorneyType struct {
 }
 type PriceListType struct {
 	ID                *IDType
-	StatusCode        *StatusCodeType
+	StatusCode        *CodeType1
 	ValidityPeriod    []PeriodType
 	PreviousPriceList *PriceListType
 }
 type ProcessJustificationType struct {
-	PreviousCancellationReasonCode *PreviousCancellationReasonCodeType
-	ProcessReasonCode              *ProcessReasonCodeType
+	PreviousCancellationReasonCode *CodeType1
+	ProcessReasonCode              *CodeType1
 	ProcessReason                  []ProcessReasonType
 	Description                    []DescriptionType
 }
@@ -4803,7 +3650,7 @@ type ProjectReferenceType struct {
 }
 type WorkPhaseReferenceType struct {
 	ID                         *IDType
-	WorkPhaseCode              *WorkPhaseCodeType
+	WorkPhaseCode              *CodeType1
 	WorkPhase                  []WorkPhaseType
 	ProgressPercent            *ProgressPercentType
 	StartDate                  *StartDateType
@@ -4811,14 +3658,14 @@ type WorkPhaseReferenceType struct {
 	WorkOrderDocumentReference []DocumentReferenceType
 }
 type PromotionalEventType struct {
-	PromotionalEventTypeCode      *PromotionalEventTypeCodeType
+	PromotionalEventTypeCode      *CodeType1
 	SubmissionDate                *SubmissionDateType
 	FirstShipmentAvailibilityDate *FirstShipmentAvailibilityDateType
 	LatestProposalAcceptanceDate  *LatestProposalAcceptanceDateType
 	PromotionalSpecification      []PromotionalSpecificationType
 }
 type PromotionalSpecificationType struct {
-	SpecificationID          *SpecificationIDType
+	SpecificationID          *IdentifierType1
 	PromotionalEventLineItem []PromotionalEventLineItemType
 	EventTactic              []EventTacticType
 }
@@ -4827,7 +3674,7 @@ type PromotionalEventLineItemType struct {
 	EventLineItem *EventLineItemType
 }
 type QualificationResolutionType struct {
-	AdmissionCode         *AdmissionCodeType
+	AdmissionCode         *CodeType1
 	ExclusionReason       []ExclusionReasonType
 	Resolution            []ResolutionType
 	ResolutionDate        *ResolutionDateType
@@ -4838,9 +3685,9 @@ type QuotationLineType struct {
 	ID                               *IDType
 	Note                             []NoteType
 	Quantity                         *QuantityType2
-	LineExtensionAmount              *LineExtensionAmountType
-	TotalTaxAmount                   *TotalTaxAmountType
-	RequestForQuotationLineID        *RequestForQuotationLineIDType
+	LineExtensionAmount              *AmountType1
+	TotalTaxAmount                   *AmountType1
+	RequestForQuotationLineID        *IdentifierType1
 	DocumentReference                []DocumentReferenceType
 	LineItem                         *LineItemType
 	SellerProposedSubstituteLineItem []LineItemType
@@ -4853,15 +3700,15 @@ type ReceiptLineType struct {
 	Note                    []NoteType
 	ReceivedQuantity        *ReceivedQuantityType
 	ShortQuantity           *ShortQuantityType
-	ShortageActionCode      *ShortageActionCodeType
+	ShortageActionCode      *CodeType1
 	RejectedQuantity        *RejectedQuantityType
-	RejectReasonCode        *RejectReasonCodeType
+	RejectReasonCode        *CodeType1
 	RejectReason            []RejectReasonType
-	RejectActionCode        *RejectActionCodeType
-	QuantityDiscrepancyCode *QuantityDiscrepancyCodeType
+	RejectActionCode        *CodeType1
+	QuantityDiscrepancyCode *CodeType1
 	OversupplyQuantity      *OversupplyQuantityType
 	ReceivedDate            *ReceivedDateType
-	TimingComplaintCode     *TimingComplaintCodeType
+	TimingComplaintCode     *CodeType1
 	TimingComplaint         *TimingComplaintType
 	OrderLineReference      *OrderLineReferenceType
 	DespatchLineReference   []LineReferenceType
@@ -4875,13 +3722,13 @@ type ReminderLineType struct {
 	Note                           []NoteType
 	UUID                           *UUIDType
 	BalanceBroughtForwardIndicator *BalanceBroughtForwardIndicatorType
-	DebitLineAmount                *DebitLineAmountType
-	CreditLineAmount               *CreditLineAmountType
-	AccountingCostCode             *AccountingCostCodeType
+	DebitLineAmount                *AmountType1
+	CreditLineAmount               *AmountType1
+	AccountingCostCode             *CodeType1
 	AccountingCost                 *AccountingCostType
 	PenaltySurchargePercent        *PenaltySurchargePercentType
 	Amount                         *AmountType2
-	PaymentPurposeCode             *PaymentPurposeCodeType
+	PaymentPurposeCode             *CodeType1
 	ReminderPeriod                 []PeriodType
 	BillingReference               []BillingReferenceType
 	ExchangeRate                   *ExchangeRateType
@@ -4890,10 +3737,10 @@ type RemittanceAdviceLineType struct {
 	ID                      *IDType
 	Note                    []NoteType
 	UUID                    *UUIDType
-	DebitLineAmount         *DebitLineAmountType
-	CreditLineAmount        *CreditLineAmountType
-	BalanceAmount           *BalanceAmountType
-	PaymentPurposeCode      *PaymentPurposeCodeType
+	DebitLineAmount         *AmountType1
+	CreditLineAmount        *AmountType1
+	BalanceAmount           *AmountType1
+	PaymentPurposeCode      *CodeType1
 	InvoicingPartyReference *InvoicingPartyReferenceType
 	AccountingSupplierParty *SupplierPartyType
 	AccountingCustomerParty *CustomerPartyType
@@ -4911,15 +3758,15 @@ type RequestForQuotationLineType struct {
 	UUID                      *UUIDType
 	Note                      []NoteType
 	OptionalLineItemIndicator *OptionalLineItemIndicatorType
-	PrivacyCode               *PrivacyCodeType
+	PrivacyCode               *CodeType1
 	//Burayı kontrol et
 	//PrivacyCode               SecurityClassificationCodeType
 	DocumentReference []DocumentReferenceType
 	LineItem          *LineItemType
 }
 type ResultOfVerificationType struct {
-	ValidatorID          *ValidatorIDType
-	ValidationResultCode *ValidationResultCodeType
+	ValidatorID          *IdentifierType1
+	ValidationResultCode *CodeType1
 	ValidationDate       *ValidationDateType
 	ValidationTime       *ValidationTimeType
 	ValidateProcess      *ValidateProcessType
@@ -4929,7 +3776,7 @@ type ResultOfVerificationType struct {
 }
 type ServiceProviderPartyType struct {
 	ID              *IDType
-	ServiceTypeCode *ServiceTypeCodeType
+	ServiceTypeCode *CodeType1
 	ServiceType     []ServiceTypeType
 	Party           *PartyType
 	SellerContact   *ContactType
@@ -4943,10 +3790,10 @@ type StatementLineType struct {
 	Note                           []NoteType
 	UUID                           *UUIDType
 	BalanceBroughtForwardIndicator *BalanceBroughtForwardIndicatorType
-	DebitLineAmount                *DebitLineAmountType
-	CreditLineAmount               *CreditLineAmountType
-	BalanceAmount                  *BalanceAmountType
-	PaymentPurposeCode             *PaymentPurposeCodeType
+	DebitLineAmount                *AmountType1
+	CreditLineAmount               *AmountType1
+	BalanceAmount                  *AmountType1
+	PaymentPurposeCode             *CodeType1
 	PaymentMeans                   *PaymentMeansType
 	PaymentTerms                   []PaymentTermsType
 	BuyerCustomerParty             *CustomerPartyType
@@ -4966,14 +3813,14 @@ type StockAvailabilityReportLineType struct {
 	ID                     *IDType
 	Note                   []NoteType
 	Quantity               *QuantityType2
-	ValueAmount            *ValueAmountType
+	ValueAmount            *AmountType1
 	AvailabilityDate       *AvailabilityDateType
-	AvailabilityStatusCode *AvailabilityStatusCodeType
+	AvailabilityStatusCode *CodeType1
 	Item                   *ItemType
 }
 type SubscriberConsumptionType struct {
-	ConsumptionID           *ConsumptionIDType
-	SpecificationTypeCode   *SpecificationTypeCodeType
+	ConsumptionID           *IdentifierType1
+	SpecificationTypeCode   *CodeType1
 	Note                    []NoteType
 	TotalMeteredQuantity    *TotalMeteredQuantityType
 	SubscriberParty         *PartyType
@@ -4991,14 +3838,14 @@ type SupplierConsumptionType struct {
 	ConsumptionLine      []ConsumptionLineType
 }
 type TenderResultType struct {
-	TenderResultCodeType
+	TenderResultCode                 *CodeType1
 	Description                      []DescriptionType
-	AdvertisementAmount              *AdvertisementAmountType
+	AdvertisementAmount              *AmountType1
 	AwardDate                        *AwardDateType
 	AwardTime                        *AwardTimeType
 	ReceivedTenderQuantity           *ReceivedTenderQuantityType
-	LowerTenderAmount                *LowerTenderAmountType
-	HigherTenderAmount               *HigherTenderAmountType
+	LowerTenderAmount                *AmountType1
+	HigherTenderAmount               *AmountType1
 	StartDate                        *StartDateType
 	ReceivedElectronicTenderQuantity *ReceivedElectronicTenderQuantityType
 	ReceivedForeignTenderQuantity    *ReceivedForeignTenderQuantityType
@@ -5019,15 +3866,15 @@ type TendererPartyQualificationType struct {
 }
 type TenderingProcessType struct {
 	ID                                     *IDType
-	OriginalContractingSystemID            *OriginalContractingSystemIDType
+	OriginalContractingSystemID            *IdentifierType1
 	Description                            []DescriptionType
 	NegotiationDescription                 []NegotiationDescriptionType
-	ProcedureCode                          *ProcedureCodeType
-	UrgencyCode                            *UrgencyCodeType
-	ExpenseCode                            *ExpenseCodeType
-	PartPresentationCode                   *PartPresentationCodeType
-	ContractingSystemCode                  *ContractingSystemCodeType
-	SubmissionMethodCode                   *SubmissionMethodCodeType
+	ProcedureCode                          *CodeType1
+	UrgencyCode                            *CodeType1
+	ExpenseCode                            *CodeType1
+	PartPresentationCode                   *CodeType1
+	ContractingSystemCode                  *CodeType1
+	SubmissionMethodCode                   *CodeType1
 	CandidateReductionConstraintIndicator  *CandidateReductionConstraintIndicatorType
 	GovernmentAgreementConstraintIndicator *GovernmentAgreementConstraintIndicatorType
 	DocumentAvailabilityPeriod             *PeriodType
@@ -5045,7 +3892,7 @@ type TenderingProcessType struct {
 }
 type TradeFinancingType struct {
 	FrameworkAgreement        *IDType
-	FinancingInstrumentCode   *FinancingInstrumentCodeType
+	FinancingInstrumentCode   *CodeType1
 	ContractDocumentReference *DocumentReferenceType
 	DocumentReference         []DocumentReferenceType
 	FinancingParty            *PartyType
@@ -5054,15 +3901,15 @@ type TradeFinancingType struct {
 }
 type TransactionConditionsType struct {
 	ID                *IDType
-	ActionCode        *ActionCodeType
+	ActionCode        *CodeType1
 	Description       []DescriptionType
 	DocumentReference []DocumentReferenceType
 }
 type TransportEquipmentSealType struct {
 	ID                 *IDType
-	SealIssuerTypeCode *SealIssuerTypeCodeType
+	SealIssuerTypeCode *CodeType1
 	Condition          *ConditionType
-	SealStatusCode     *SealStatusCodeType
+	SealStatusCode     *CodeType1
 	SealingPartyType   *SealingPartyTypeType
 }
 type TransportExecutionTermsType struct {
@@ -5094,7 +3941,7 @@ type TransportScheduleType struct {
 }
 type TransportationSegmentType struct {
 	SequenceNumeric                   *SequenceNumericType
-	TransportExecutionPlanReferenceID *TransportExecutionPlanReferenceIDType
+	TransportExecutionPlanReferenceID *IdentifierType1
 	TransportationService             *TransportationServiceType
 	TransportServiceProviderParty     *PartyType
 	ReferencedConsignment             *ConsignmentType
@@ -5108,7 +3955,7 @@ type UBLDocumentSignaturesType struct {
 }
 type SignatureInformationType struct {
 	ID                    *IDType
-	ReferencedSignatureID *ReferencedSignatureIDType
+	ReferencedSignatureID *IdentifierType1
 	Signature             *SignatureType1
 }
 type SignatureType1 struct {
