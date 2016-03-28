@@ -1,43 +1,57 @@
-package main
+package invoice
 
 import (
 	"encoding/xml"
-	"time"
+	//"time"
 )
 
-func (c *DateType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	const shortForm = "2006-01-02" // yyyy-mm-dd date format
-	var v string
-	d.DecodeElement(&v, &start)
-	parse, err := time.Parse(shortForm, v)
-	if err != nil {
-		return err
-	}
-	*c = DateType{parse}
-	return nil
+//func (c *DateType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+//	const shortForm = "2006-01-02" // yyyy-mm-dd date format
+//	var v string
+//	d.DecodeElement(&v, &start)
+//	parse, err := time.Parse(shortForm, v)
+//	if err != nil {
+//		return err
+//	}
+//	*c = DateType{parse}
+//	return nil
+//}
+
+//func (c *TimeType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
+//	const shortForm = "15:04:05" // hh-MM-ss time format
+//	var v string
+//	d.DecodeElement(&v, &start)
+//	parse, err := time.Parse(shortForm, v)
+//	if err != nil {
+//		return err
+//	}
+//	*c = TimeType{parse}
+//	return nil
+//}
+
+type DateType struct {
+	//Normalde time.time olması gerekirken geçi cözüm olarak string yapılmıştır
+	//time.Time
+	XMLName xml.Name
+	Value   string `xml:",chardata"`
 }
 
-func (c *TimeType) UnmarshalXML(d *xml.Decoder, start xml.StartElement) error {
-	const shortForm = "15:04:05" // hh-MM-ss time format
-	var v string
-	d.DecodeElement(&v, &start)
-	parse, err := time.Parse(shortForm, v)
-	if err != nil {
-		return err
-	}
-	*c = TimeType{parse}
-	return nil
+type TimeType struct {
+	//Normalde time.time olması gerekirken geçi cözüm olarak string yapılmıştır
+	//time.Time
+	XMLName xml.Name
+	Value   string `xml:",chardata"`
 }
 
 type InvoiceType struct {
-	XMLName                        xml.Name `xml:"Invoice"`
-	UBLExtensions                  []UBLExtensionType
+	XMLName                        xml.Name           `xml:"Invoice"`
+	UBLExtensions                  []UBLExtensionType `xml:"UBLExtensions,omitempty"`
 	UBLVersionID                   *IdentifierType1
 	CustomizationID                *IdentifierType1
 	ProfileID                      *IdentifierType1
 	ID                             *IDType
-	CopyIndicator                  *IndicatorType `xml:",omitempty"`
-	UUID                           *UUIDType
+	CopyIndicator                  *IndicatorType `xml:"CopyIndicator,omitempty"`
+	UUID                           *UUIDType      `xml:"UUID,omitempty"`
 	IssueDate                      *DateType
 	IssueTime                      *TimeType
 	InvoiceTypeCode                *CodeType1
@@ -76,11 +90,17 @@ type InvoiceType struct {
 	LegalMonetaryTotal             *MonetaryTotalType
 	InvoiceLine                    []InvoiceLineType
 }
+
+//type UBLExtensionType struct {
+//	UBLExtension UBLExtensionType2
+//}
 type UBLExtensionType struct {
-	ExtensionContent string //System.Xml.XmlElement
+	XMLName          xml.Name
+	ExtensionContent string `xml:",innerxml"` //System.Xml.XmlElement
 }
+
 type PriceType struct {
-	PriceAmount PriceAmountType
+	PriceAmountType
 }
 type PriceAmountType struct {
 	PriceAmount AmountType
@@ -101,6 +121,7 @@ type LineIDType struct {
 	IdentifierType1
 }
 type IdentifierType1 struct {
+	XMLName xml.Name
 	IdentifierType
 }
 type IdentifierType struct {
@@ -149,14 +170,6 @@ type DocumentReferenceType struct {
 	Attachment          *AttachmentType
 	ValidityPeriod      *PeriodType
 	IssuerParty         *PartyType
-}
-
-type DateType struct {
-	time.Time
-}
-
-type DateType1 struct {
-	DateType
 }
 
 type DocumentTypeType struct {
@@ -210,9 +223,6 @@ type StartTimeType struct {
 	TimeType
 }
 
-type TimeType struct {
-	time.Time
-}
 type DurationMeasureType struct {
 	MeasureType1
 }
@@ -691,7 +701,7 @@ type ExchangeRateType struct {
 	SourceCurrencyCode *CodeType1
 	TargetCurrencyCode *CodeType1
 	CalculationRate    *RateType
-	Date               *DateType1
+	Date               *DateType
 }
 type PaymentTermsType struct {
 	Note                    *TextType1
@@ -834,7 +844,7 @@ type RetrievalMethodType struct {
 }
 type SPKIDataType struct {
 	SPKISexp []byte
-	Any      string //System.Xml.XmlElement
+	Any      string `xml:",innerxml"` //System.Xml.XmlElement
 }
 type X509DataType struct {
 	Items []string //object

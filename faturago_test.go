@@ -5,6 +5,7 @@ import (
 
 	"encoding/xml"
 
+	"faturago/invoice"
 	//"os"
 )
 
@@ -16,7 +17,7 @@ func stringKarsilastir(t *testing.T, alanAdi, gerceklesen, beklenen string) {
 
 func TestInvoiceDeserialize(t *testing.T) {
 
-	var invoice InvoiceType
+	var invoice invoice.InvoiceType
 
 	err := xml.Unmarshal([]byte(xmlTicariFatura), &invoice)
 
@@ -26,8 +27,8 @@ func TestInvoiceDeserialize(t *testing.T) {
 
 	stringKarsilastir(t, "invoice.UBLVersionID", invoice.UBLVersionID.Value, "2.1")
 	stringKarsilastir(t, "invoice.CustomizationID", invoice.CustomizationID.Value, "TR1.2")
-	stringKarsilastir(t, "invoice.IssueDate", invoice.IssueDate.String(), "2009-01-05 00:00:00 +0000 UTC")
-	stringKarsilastir(t, "invoice.IssueTime", invoice.IssueTime.String(), "0000-01-01 14:42:00 +0000 UTC")
+	stringKarsilastir(t, "invoice.IssueDate", invoice.IssueDate.Value, "2009-01-05")
+	stringKarsilastir(t, "invoice.IssueTime", invoice.IssueTime.Value, "14:42:00")
 	stringKarsilastir(t, "invoice.ID.Value", invoice.ID.Value, "GIB2009000000011")
 
 }
