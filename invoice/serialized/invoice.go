@@ -6,66 +6,61 @@ import (
 )
 
 type DateType struct {
-	XMLName xml.Name
-	Value   string `xml:",chardata"`
+	Value string `xml:",chardata"`
 }
 
 type TimeType struct {
-	XMLName xml.Name
-	Value   string `xml:",chardata"`
+	Value string `xml:",chardata"`
 }
 
 type InvoiceType struct {
-	XMLName                        xml.Name           `xml:"Invoice"`
-	UBLExtensions                  []UBLExtensionType `xml:"ext:UBLExtensions,omitempty"`
-	UBLVersionID                   *IdentifierType1   `xml:"cbc:UBLVersionID,omitempty"`
-	CustomizationID                *IdentifierType1
-	ProfileID                      *IdentifierType1
-	ID                             *IDType
-	CopyIndicator                  *IndicatorType `xml:"cbc:CopyIndicator,omitempty"`
-	UUID                           *UUIDType      `xml:"cbc:UUID,omitempty"`
-	IssueDate                      *DateType
-	IssueTime                      *TimeType
-	InvoiceTypeCode                *CodeType1
-	Note                           []TextType1
-	DocumentCurrencyCode           *CodeType1
-	TaxCurrencyCode                *CodeType1
-	PricingCurrencyCode            *CodeType1
-	PaymentCurrencyCode            *CodeType1
-	PaymentAlternativeCurrencyCode *CodeType1
-	AccountingCost                 *TextType1
-	LineCountNumeric               *NumericType1
-	InvoicePeriod                  *PeriodType
-	OrderReference                 *OrderReferenceType
-	BillingReference               []BillingReferenceType
-	DespatchDocumentReference      []DocumentReferenceType
-	ReceiptDocumentReference       []DocumentReferenceType
-	OriginatorDocumentReference    []DocumentReferenceType
-	ContractDocumentReference      []DocumentReferenceType
-	AdditionalDocumentReference    []DocumentReferenceType
-	Signature                      []SignatureType
-	AccountingSupplierParty        *SupplierPartyType
-	AccountingCustomerParty        *CustomerPartyType
-	BuyerCustomerParty             *CustomerPartyType
-	SellerSupplierParty            *SupplierPartyType
-	TaxRepresentativeParty         *PartyType
-	Delivery                       []DeliveryType
-	PaymentMeans                   []PaymentMeansType
-	PaymentTerms                   *PaymentTermsType
-	AllowanceCharge                []AllowanceChargeType
-	TaxExchangeRate                *ExchangeRateType
-	PricingExchangeRate            *ExchangeRateType
-	PaymentExchangeRate            *ExchangeRateType
-	PaymentAlternativeExchangeRate *ExchangeRateType
-	TaxTotal                       []TaxTotalType
-	WithholdingTaxTotal            []TaxTotalType
-	LegalMonetaryTotal             *MonetaryTotalType
-	InvoiceLine                    []InvoiceLineType
+	XMLName                        xml.Name                `xml:"Invoice"`
+	UBLExtensions                  []UBLExtensionType      `xml:"ext:UBLExtensions,omitempty"`
+	UBLVersionID                   *IdentifierType1        `xml:"cbc:UBLVersionID,omitempty"`
+	CustomizationID                *IdentifierType1        `xml:"cbc:CustomizationID,omitempty"`
+	ProfileID                      *IdentifierType1        `xml:"cbc:ProfileID,omitempty"`
+	ID                             *IdentifierType1        `xml:"cbc:ID,omitempty"`
+	CopyIndicator                  *IndicatorType          `xml:"cbc:CopyIndicator,omitempty"`
+	UUID                           *IdentifierType1        `xml:"cbc:UUID,omitempty"`
+	IssueDate                      *DateType               `xml:"cbc:IssueDate,omitempty"`
+	IssueTime                      *TimeType               `xml:"cbc:IssueTime,omitempty"`
+	InvoiceTypeCode                *CodeType               `xml:"cbc:InvoiceTypeCode,omitempty"`
+	Note                           []TextType1             `xml:"cbc:Note,omitempty"`
+	DocumentCurrencyCode           *CodeType               `xml:"cbc:DocumentCurrencyCode,omitempty"`
+	TaxCurrencyCode                *CodeType               `xml:"cbc:TaxCurrencyCode,omitempty"`
+	PricingCurrencyCode            *CodeType               `xml:"cbc:PricingCurrencyCode,omitempty"`
+	PaymentCurrencyCode            *CodeType               `xml:"cbc:PaymentCurrencyCode,omitempty"`
+	PaymentAlternativeCurrencyCode *CodeType               `xml:"cbc:PaymentAlternativeCurrencyCode,omitempty"`
+	AccountingCost                 *TextType1              `xml:"cbc:AccountingCost,omitempty"`
+	LineCountNumeric               *NumericType1           `xml:"cbc:LineCountNumeric,omitempty"`
+	InvoicePeriod                  *PeriodType             `xml:"cbc:InvoicePeriod,omitempty"`
+	OrderReference                 *OrderReferenceType     `xml:"cbc:OrderReference,omitempty"`
+	BillingReference               []BillingReferenceType  `xml:"cbc:BillingReference,omitempty"`
+	DespatchDocumentReference      []DocumentReferenceType `xml:"cbc:DespatchDocumentReference,omitempty"`
+	ReceiptDocumentReference       []DocumentReferenceType `xml:"cbc:ReceiptDocumentReference,omitempty"`
+	OriginatorDocumentReference    []DocumentReferenceType `xml:"cbc:OriginatorDocumentReference,omitempty"`
+	ContractDocumentReference      []DocumentReferenceType `xml:"cbc:ContractDocumentReference,omitempty"`
+	AdditionalDocumentReference    []DocumentReferenceType `xml:"cbc:AdditionalDocumentReference,omitempty"`
+	Signature                      []SignatureType         `xml:"cbc:Signature,omitempty"`
+	AccountingSupplierParty        *SupplierPartyType      `xml:"cbc:AccountingSupplierParty,omitempty"`
+	AccountingCustomerParty        *CustomerPartyType      `xml:"cbc:AccountingCustomerParty,omitempty"`
+	BuyerCustomerParty             *CustomerPartyType      `xml:"cbc:BuyerCustomerParty,omitempty"`
+	SellerSupplierParty            *SupplierPartyType      `xml:"cbc:SellerSupplierParty,omitempty"`
+	TaxRepresentativeParty         *PartyType              `xml:"cbc:TaxRepresentativeParty,omitempty"`
+	Delivery                       []DeliveryType          `xml:"cbc:Delivery,omitempty"`
+	PaymentMeans                   []PaymentMeansType      `xml:"cbc:PaymentMeans,omitempty"`
+	PaymentTerms                   *PaymentTermsType       `xml:"cbc:PaymentTerms,omitempty"`
+	AllowanceCharge                []AllowanceChargeType   `xml:"cbc:AllowanceCharge,omitempty"`
+	TaxExchangeRate                *ExchangeRateType       `xml:"cbc:TaxExchangeRate,omitempty"`
+	PricingExchangeRate            *ExchangeRateType       `xml:"cbc:PricingExchangeRate,omitempty"`
+	PaymentExchangeRate            *ExchangeRateType       `xml:"cbc:PaymentExchangeRate,omitempty"`
+	PaymentAlternativeExchangeRate *ExchangeRateType       `xml:"cbc:PaymentAlternativeExchangeRate,omitempty"`
+	TaxTotal                       []TaxTotalType          `xml:"cbc:TaxTotal,omitempty"`
+	WithholdingTaxTotal            []TaxTotalType          `xml:"cbc:WithholdingTaxTotal,omitempty"`
+	LegalMonetaryTotal             *MonetaryTotalType      `xml:"cbc:LegalMonetaryTotal,omitempty"`
+	InvoiceLine                    []InvoiceLineType       `xml:"cbc:InvoiceLine,omitempty"`
 }
 
-//type UBLExtensionType struct {
-//	UBLExtension UBLExtensionType2
-//}
 type UBLExtensionType struct {
 	XMLName          xml.Name
 	ExtensionContent string `xml:",innerxml"` //System.Xml.XmlElement
@@ -86,14 +81,14 @@ type AmountType struct {
 
 type LineReferenceType struct {
 	LineID            *LineIDType
-	LineStatusCode    *LineStatusCodeType
+	LineStatusCode    *CodeType
 	DocumentReference *DocumentReferenceType
 }
 type LineIDType struct {
 	IdentifierType1
 }
 type IdentifierType1 struct {
-	XMLName xml.Name
+	//XMLName xml.Name
 	IdentifierType
 }
 type IdentifierType struct {
@@ -106,20 +101,7 @@ type IdentifierType struct {
 	SchemeURI        string `xml:"schemeURI,attr,omitempty"`
 	Value            string `xml:",chardata"`
 }
-type IDType struct {
-	IdentifierType1
-}
 
-type UUIDType struct {
-	IdentifierType1
-}
-
-type LineStatusCodeType struct {
-	CodeType1
-}
-type CodeType1 struct {
-	CodeType
-}
 type CodeType struct {
 	ListID         string `xml:"listID,attr,omitempty"`
 	ListAgencyID   string `xml:"listAgencyID,attr,omitempty"`
@@ -134,9 +116,9 @@ type CodeType struct {
 }
 
 type DocumentReferenceType struct {
-	ID                  *IDType
+	ID                  *IdentifierType1
 	IssueDate           *DateType
-	DocumentTypeCode    *CodeType1
+	DocumentTypeCode    *CodeType
 	DocumentType        *DocumentTypeType
 	DocumentDescription []TextType1
 	Attachment          *AttachmentType
@@ -214,7 +196,7 @@ type MeasureType2 struct {
 type PartyType struct {
 	WebsiteURI                 *IdentifierType1
 	EndpointID                 *IdentifierType1
-	IndustryClassificationCode *CodeType1
+	IndustryClassificationCode *CodeType
 	PartyIdentification        []PartyIdentificationType
 	PartyName                  *PartyNameType
 	PostalAddress              *AddressType
@@ -225,13 +207,13 @@ type PartyType struct {
 	AgentParty                 *PartyType
 }
 type PartyIdentificationType struct {
-	ID IDType
+	ID IdentifierType1
 }
 type PartyNameType struct {
 	Name NameType1
 }
 type AddressType struct {
-	ID                  *IDType
+	ID                  *IdentifierType1
 	Postbox             *TextType1
 	Room                *TextType1
 	StreetName          *NameType
@@ -246,7 +228,7 @@ type AddressType struct {
 	Country             *CountryType
 }
 type CountryType struct {
-	IdentificationCode *CodeType1
+	IdentificationCode *CodeType
 	Name               *NameType1
 }
 type PartyTaxSchemeType struct {
@@ -254,7 +236,7 @@ type PartyTaxSchemeType struct {
 }
 type TaxSchemeType struct {
 	Name        *NameType1
-	TaxTypeCode *CodeType1
+	TaxTypeCode *CodeType
 }
 type PartyLegalEntityType struct {
 	RegistrationName            *NameType
@@ -271,9 +253,9 @@ type IndicatorType struct {
 	Value bool `xml:",chardata"`
 }
 type CorporateRegistrationSchemeType struct {
-	ID                            *IDType
+	ID                            *IdentifierType1
 	Name                          *NameType1
-	CorporateRegistrationTypeCode *CodeType1
+	CorporateRegistrationTypeCode *CodeType
 	JurisdictionRegionAddress     []AddressType
 }
 type ContactType struct {
@@ -284,7 +266,7 @@ type ContactType struct {
 	OtherCommunication []CommunicationType
 }
 type CommunicationType struct {
-	ChannelCode *CodeType1
+	ChannelCode *CodeType
 	Channel     *TextType1
 	Value       *TextType1
 }
@@ -299,8 +281,8 @@ type PersonType struct {
 	IdentityDocumentReference *DocumentReferenceType
 }
 type FinancialAccountType struct {
-	ID                         *IDType
-	CurrencyCode               *CodeType1
+	ID                         *IdentifierType1
+	CurrencyCode               *CodeType
 	PaymentNote                *TextType1
 	FinancialInstitutionBranch *BranchType
 }
@@ -314,19 +296,19 @@ type FinancialInstitutionType struct {
 type OrderLineReferenceType struct {
 	LineID           *LineIDType
 	SalesOrderLineID *IdentifierType1
-	UUID             *UUIDType
-	LineStatusCode   *LineStatusCodeType
+	UUID             *IdentifierType1
+	LineStatusCode   *CodeType
 	OrderReference   *OrderReferenceType
 }
 type OrderReferenceType struct {
-	ID                *IDType
+	ID                *IdentifierType1
 	SalesOrderID      *IdentifierType1
 	IssueDate         *DateType
-	OrderTypeCode     *CodeType1
+	OrderTypeCode     *CodeType
 	DocumentReference *DocumentReferenceType
 }
 type InvoiceLineType struct {
-	ID                    IDType
+	ID                    *IdentifierType1
 	Note                  []TextType1
 	InvoicedQuantity      *QuantityType1
 	LineExtensionAmount   *AmountType
@@ -358,7 +340,7 @@ type QuantityType2 struct {
 }
 
 type DeliveryType struct {
-	ID                          *IDType
+	ID                          *IdentifierType1
 	Quantity                    *QuantityType2
 	ActualDeliveryDate          *DateType
 	ActualDeliveryTime          *TimeType
@@ -375,11 +357,11 @@ type DeliveryType struct {
 	Shipment                    *ShipmentType
 }
 type LocationType1 struct {
-	ID      *IDType
+	ID      *IdentifierType1
 	Address *AddressType
 }
 type DespatchType struct {
-	ID                      *IDType
+	ID                      *IdentifierType1
 	ActualDespatchDate      *DateType
 	ActualDespatchTime      *TimeType
 	Instructions            *TextType1
@@ -389,13 +371,13 @@ type DespatchType struct {
 	EstimatedDespatchPeriod *PeriodType
 }
 type DeliveryTermsType struct {
-	ID           *IDType
+	ID           *IdentifierType1
 	SpecialTerms *TextType1
 	Amount       *AmountType
 }
 type ShipmentType struct {
-	ID                                 *IDType
-	HandlingCode                       *CodeType1
+	ID                                 *IdentifierType1
+	HandlingCode                       *CodeType
 	HandlingInstructions               *TextType1
 	GrossWeightMeasure                 *MeasureType
 	NetWeightMeasure                   *MeasureType
@@ -415,9 +397,9 @@ type ShipmentType struct {
 	LastExitPortLocation               *LocationType1
 }
 type TransportHandlingUnitType struct {
-	ID                              *IDType
-	TransportHandlingUnitTypeCode   *CodeType1
-	HandlingCode                    *CodeType1
+	ID                              *IdentifierType1
+	TransportHandlingUnitTypeCode   *CodeType
+	HandlingCode                    *CodeType
 	HandlingInstructions            *TextType1
 	HazardousRiskIndicator          *IndicatorType
 	TotalGoodsItemQuantity          *QuantityType1
@@ -437,18 +419,18 @@ type TransportHandlingUnitType struct {
 	CustomsDeclaration              []CustomsDeclarationType
 }
 type PackageType struct {
-	CustomsDeclaration          *IDType
+	CustomsDeclaration          *IdentifierType1
 	Quantity                    *QuantityType2
 	ReturnableMaterialIndicator *IndicatorType
-	PackageLevelCode            *CodeType1
-	PackagingTypeCode           *CodeType1
+	PackageLevelCode            *CodeType
+	PackagingTypeCode           *CodeType
 	PackingMaterial             []TextType1
 	ContainedPackage            []PackageType
 	GoodsItem                   []GoodsItemType
 	MeasurementDimension        []DimensionType
 }
 type GoodsItemType struct {
-	ID                               *IDType
+	ID                               *IdentifierType1
 	Description                      []TextType1
 	HazardousRiskIndicator           *IndicatorType
 	DeclaredCustomsValueAmount       *AmountType
@@ -464,7 +446,7 @@ type GoodsItemType struct {
 	NetVolumeMeasure                 *MeasureType
 	Quantity                         *QuantityType2
 	RequiredCustomsID                *IdentifierType1
-	CustomsStatusCode                *CodeType1
+	CustomsStatusCode                *CodeType
 	CustomsTariffQuantity            *QuantityType1
 	CustomsImportClassifiedIndicator *IndicatorType
 	ChargeableQuantity               *QuantityType1
@@ -490,10 +472,10 @@ type ItemType struct {
 	ItemInstance                    []ItemInstanceType
 }
 type ItemIdentificationType struct {
-	ID *IDType
+	ID *IdentifierType1
 }
 type CommodityClassificationType struct {
-	ItemClassificationCode *CodeType1
+	ItemClassificationCode *CodeType
 }
 type ItemInstanceType struct {
 	ProductTraceID         *IdentifierType1
@@ -506,14 +488,14 @@ type ItemInstanceType struct {
 	LotIdentification      *LotIdentificationType
 }
 type ItemPropertyType struct {
-	ID                *IDType
+	ID                *IdentifierType1
 	Name              *NameType1
-	NameCode          *CodeType1
+	NameCode          *CodeType
 	TestMethod        *TextType1
 	Value             *TextType1
 	ValueQuantity     *QuantityType1
 	ValueQualifier    []TextType1
-	ImportanceCode    *CodeType1
+	ImportanceCode    *CodeType
 	ListValue         []TextType1
 	UsabilityPeriod   *PeriodType
 	ItemPropertyGroup []ItemPropertyGroupType
@@ -521,9 +503,9 @@ type ItemPropertyType struct {
 	ItemPropertyRange *ItemPropertyRangeType
 }
 type ItemPropertyGroupType struct {
-	ID             *IDType
+	ID             *IdentifierType1
 	Name           *NameType1
-	ImportanceCode *CodeType1
+	ImportanceCode *CodeType
 }
 type DimensionType struct {
 	AttributeID    *IdentifierType1
@@ -583,17 +565,17 @@ type TemperatureType struct {
 	Description []TextType1
 }
 type TransportEquipmentType struct {
-	ID                         *IDType
-	TransportEquipmentTypeCode *CodeType1
+	ID                         *IdentifierType1
+	TransportEquipmentTypeCode *CodeType
 	Description                *TextType1
 }
 type TransportMeansType struct {
 	JourneyID                 *IdentifierType1
 	RegistrationNationalityID *IdentifierType1
 	RegistrationNationality   []TextType1
-	DirectionCode             *CodeType1
-	TransportMeansTypeCode    *CodeType1
-	TradeServiceCode          *CodeType1
+	DirectionCode             *CodeType
+	TransportMeansTypeCode    *CodeType
+	TradeServiceCode          *CodeType
 	Stowage                   *StowageType
 	AirTransport              *AirTransportType
 	RoadTransport             *RoadTransportType
@@ -628,16 +610,16 @@ type MaritimeTransportType struct {
 	RegistryPortLocation                 *LocationType1
 }
 type HazardousGoodsTransitType struct {
-	TransportEmergencyCardCode *CodeType1
-	PackingCriteriaCode        *CodeType1
-	HazardousRegulationCode    *CodeType1
-	InhalationToxicityZoneCode *CodeType1
-	TransportAuthorizationCode *CodeType1
+	TransportEmergencyCardCode *CodeType
+	PackingCriteriaCode        *CodeType
+	HazardousRegulationCode    *CodeType
+	InhalationToxicityZoneCode *CodeType
+	TransportAuthorizationCode *CodeType
 	MaximumTemperature         *TemperatureType
 	MinimumTemperature         *TemperatureType
 }
 type CustomsDeclarationType struct {
-	ID          *IDType
+	ID          *IdentifierType1
 	IssuerParty *PartyType
 }
 type TaxTotalType struct {
@@ -656,7 +638,7 @@ type TaxSubtotalType struct {
 }
 type TaxCategoryType struct {
 	Name                   *NameType1
-	TaxExemptionReasonCode *CodeType1
+	TaxExemptionReasonCode *CodeType
 	TaxExemptionReason     *TextType1
 	TaxScheme              *TaxSchemeType
 }
@@ -670,8 +652,8 @@ type MonetaryTotalType struct {
 	PayableAmount         *AmountType
 }
 type ExchangeRateType struct {
-	SourceCurrencyCode *CodeType1
-	TargetCurrencyCode *CodeType1
+	SourceCurrencyCode *CodeType
+	TargetCurrencyCode *CodeType
 	CalculationRate    *RateType
 	Date               *DateType
 }
@@ -684,9 +666,9 @@ type PaymentTermsType struct {
 	SettlementPeriod        *PeriodType
 }
 type PaymentMeansType struct {
-	PaymentMeansCode      *CodeType1
+	PaymentMeansCode      *CodeType
 	PaymentDueDate        *DateType
-	PaymentChannelCode    *CodeType1
+	PaymentChannelCode    *CodeType
 	InstructionNote       *TextType1
 	PayerFinancialAccount *FinancialAccountType
 	PayeeFinancialAccount *FinancialAccountType
@@ -698,12 +680,12 @@ type SupplierPartyType struct {
 	Party *PartyType
 }
 type SignatureType struct {
-	ID                         *IDType
+	ID                         *IdentifierType1
 	SignatoryParty             *PartyType
 	DigitalSignatureAttachment *AttachmentType
 }
 type BillingReferenceLineType struct {
-	ID              *IDType
+	ID              *IdentifierType1
 	Amount          *AmountType
 	AllowanceCharge []AllowanceChargeType
 }
