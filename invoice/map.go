@@ -17,9 +17,58 @@ func InvoiceMap(V *InvoiceType) serialized.InvoiceType {
 	invoice2.IssueDate = DateTypeMap(V.IssueDate)
 	invoice2.IssueTime = TimeTypeMap(V.IssueTime)
 	invoice2.InvoiceTypeCode = CodeTypeMap(V.InvoiceTypeCode)
+	invoice2.Note = TextTypeListMap(V.Note)
+	invoice2.DocumentCurrencyCode = CodeTypeMap(V.DocumentCurrencyCode)
+	invoice2.TaxCurrencyCode = CodeTypeMap(V.TaxCurrencyCode)
+	invoice2.PricingCurrencyCode = CodeTypeMap(V.PricingCurrencyCode)
+	invoice2.PaymentCurrencyCode = CodeTypeMap(V.PaymentCurrencyCode)
+	invoice2.PaymentAlternativeCurrencyCode = CodeTypeMap(V.PaymentAlternativeCurrencyCode)
+	invoice2.AccountingCost = TextTypeMap(V.AccountingCost)
+	invoice2.LineCountNumeric = NumericTypeMap(V.LineCountNumeric)
 	//Map işlemi burda kaldı. devam edecek
 
 	return invoice2
+}
+
+func NumericTypeMap(v *NumericType) *serialized.NumericType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.NumericType{}
+	R.Format = v.Format
+	R.Value = v.Value
+
+	return R
+}
+
+func TextTypeListMap(v []TextType) []serialized.TextType {
+	if v == nil {
+		return nil
+	}
+
+	var j = len(v)
+
+	R := make([]serialized.TextType, j)
+
+	for i := range v {
+		R[i].Value = v[i].Value
+		R[i].LanguageLocaleID = v[i].LanguageLocaleID
+		R[i].LanguageID = v[i].LanguageID
+	}
+
+	return R
+}
+
+func TextTypeMap(v *TextType) *serialized.TextType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.TextType{}
+	R.LanguageID = v.LanguageID
+	R.LanguageLocaleID = v.LanguageLocaleID
+	R.Value = v.Value
+
+	return R
 }
 
 func CodeTypeMap(v *CodeType) *serialized.CodeType {
