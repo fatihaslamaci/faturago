@@ -152,30 +152,17 @@ type ExternalReferenceType struct {
 }
 type PeriodType struct {
 	StartDate       *DateType
-	StartTime       *StartTimeType
+	StartTime       *TimeType
 	EndDate         *DateType
 	EndTime         *TimeType
-	DurationMeasure *DurationMeasureType
+	DurationMeasure *MeasureType
 	Description     *TextType
 }
-type StartTimeType struct {
-	TimeType
-}
 
-type DurationMeasureType struct {
-	MeasureType1
-}
-type MeasureType1 struct {
-	MeasureType
-}
 type MeasureType struct {
 	unitCode              string  `xml:"unitCode,attr,omitempty"`
 	unitCodeListVersionID string  `xml:"unitCodeListVersionID,attr,omitempty"`
 	Value                 float64 `xml:",chardata"`
-}
-
-type MeasureType2 struct {
-	MeasureType1
 }
 
 type PartyType struct {
@@ -494,7 +481,7 @@ type ItemPropertyGroupType struct {
 }
 type DimensionType struct {
 	AttributeID    *IdentifierType1
-	Measure        *MeasureType2
+	Measure        *MeasureType
 	Description    []TextType
 	MinimumMeasure *MeasureType
 	MaximumMeasure *MeasureType
@@ -525,7 +512,7 @@ type NumericType struct {
 
 type TemperatureType struct {
 	AttributeID *IdentifierType1
-	Measure     *MeasureType2
+	Measure     *MeasureType
 	Description []TextType
 }
 type TransportEquipmentType struct {

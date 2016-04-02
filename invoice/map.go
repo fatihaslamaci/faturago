@@ -25,9 +25,57 @@ func InvoiceMap(V *InvoiceType) serialized.InvoiceType {
 	invoice2.PaymentAlternativeCurrencyCode = CodeTypeMap(V.PaymentAlternativeCurrencyCode)
 	invoice2.AccountingCost = TextTypeMap(V.AccountingCost)
 	invoice2.LineCountNumeric = NumericTypeMap(V.LineCountNumeric)
-	//Map işlemi burda kaldı. devam edecek
+	invoice2.InvoicePeriod = PeriodTypeMap(V.InvoicePeriod)
+	invoice2.BillingReference = BillingReferenceTypeMapList(V.BillingReference)
+	//invoice2.DespatchDocumentReference = []DocumentReferenceTypeMap(V.DespatchDocumentReference)
+	//invoice2.ReceiptDocumentReference = []DocumentReferenceTypeMap(V.ReceiptDocumentReference)
+	//invoice2.OriginatorDocumentReference = []DocumentReferenceTypeMap(V.OriginatorDocumentReference)
+	//invoice2.ContractDocumentReference = []DocumentReferenceTypeMap(V.ContractDocumentReference)
+	//invoice2.AdditionalDocumentReference = []DocumentReferenceTypeMap(V.AdditionalDocumentReference)
+	//invoice2.Signature = []SignatureTypeMap(V.Signature)
+	//invoice2.AccountingSupplierParty = *SupplierPartyTypeMap(V.AccountingSupplierParty)
+	//invoice2.AccountingCustomerParty = *CustomerPartyTypeMap(V.AccountingCustomerParty)
+	//invoice2.BuyerCustomerParty = *CustomerPartyTypeMap(V.BuyerCustomerParty)
+	//invoice2.SellerSupplierParty = *SupplierPartyTypeMap(V.SellerSupplierParty)
+	//invoice2.TaxRepresentativeParty = *PartyTypeMap(V.TaxRepresentativeParty)
+	//invoice2.Delivery = []DeliveryTypeMap(V.Delivery)
+	//invoice2.PaymentMeans = []PaymentMeansTypeMap(V.PaymentMeans)
+	//invoice2.PaymentTerms = *PaymentTermsTypeMap(V.PaymentTerms)
+	//invoice2.AllowanceCharge = []AllowanceChargeTypeMap(V.AllowanceCharge)
+	//invoice2.TaxExchangeRate = *ExchangeRateTypeMap(V.TaxExchangeRate)
+	//invoice2.PricingExchangeRate = *ExchangeRateTypeMap(V.PricingExchangeRate)
+	//invoice2.PaymentExchangeRate = *ExchangeRateTypeMap(V.PaymentExchangeRate)
+	//invoice2.PaymentAlternativeExchangeRate = *ExchangeRateTypeMap(V.PaymentAlternativeExchangeRate)
+	//invoice2.TaxTotal = []TaxTotalTypeMap(V.TaxTotal)
+	//invoice2.WithholdingTaxTotal = []TaxTotalTypeMap(V.WithholdingTaxTotal)
+	//invoice2.LegalMonetaryTotal = *MonetaryTotalTypeMap(V.LegalMonetaryTotal)
+	//invoice2.InvoiceLine = []InvoiceLineTypeMap(V.InvoiceLine)
 
 	return invoice2
+}
+
+func BillingReferenceTypeMapList(v []BillingReferenceType) []serialized.BillingReferenceType {
+	if v == nil {
+		return nil
+	}
+	//TODO map yapılacak
+	return nil
+}
+
+func PeriodTypeMap(v *PeriodType) *serialized.PeriodType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.PeriodType{}
+	R.Description = TextTypeMap(v.Description)
+	//TODO DurationMeasure yapılmadı
+	//R.DurationMeasure = PeriodTypeMap(v.DurationMeasure)
+	R.EndDate = DateTypeMap(v.EndDate)
+	R.EndTime = TimeTypeMap(v.EndTime)
+	R.StartDate = DateTypeMap(v.StartDate)
+	R.StartTime = TimeTypeMap(v.StartTime)
+
+	return R
 }
 
 func NumericTypeMap(v *NumericType) *serialized.NumericType {
