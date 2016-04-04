@@ -209,10 +209,10 @@ type PartyType struct {
 	AgentParty                 *PartyType
 }
 type PartyIdentificationType struct {
-	ID IdentifierType1
+	ID *IdentifierType1
 }
 type PartyNameType struct {
-	Name TextType
+	Name *TextType
 }
 type AddressType struct {
 	ID                  *IdentifierType1

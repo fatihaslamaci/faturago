@@ -36,12 +36,12 @@ type InvoiceType struct {
 	InvoicePeriod                  *PeriodType             `xml:"cbc:InvoicePeriod,omitempty"`
 	OrderReference                 *OrderReferenceType     `xml:"cbc:OrderReference,omitempty"`
 	BillingReference               []BillingReferenceType  `xml:"cbc:BillingReference,omitempty"`
-	DespatchDocumentReference      []DocumentReferenceType `xml:"cbc:DespatchDocumentReference,omitempty"`
+	DespatchDocumentReference      []DocumentReferenceType `xml:"cac:DespatchDocumentReference,omitempty"`
 	ReceiptDocumentReference       []DocumentReferenceType `xml:"cbc:ReceiptDocumentReference,omitempty"`
 	OriginatorDocumentReference    []DocumentReferenceType `xml:"cbc:OriginatorDocumentReference,omitempty"`
 	ContractDocumentReference      []DocumentReferenceType `xml:"cbc:ContractDocumentReference,omitempty"`
 	AdditionalDocumentReference    []DocumentReferenceType `xml:"cbc:AdditionalDocumentReference,omitempty"`
-	Signature                      []SignatureType         `xml:"cbc:Signature,omitempty"`
+	Signature                      []SignatureType         `xml:"cac:Signature,omitempty"`
 	AccountingSupplierParty        *SupplierPartyType      `xml:"cbc:AccountingSupplierParty,omitempty"`
 	AccountingCustomerParty        *CustomerPartyType      `xml:"cbc:AccountingCustomerParty,omitempty"`
 	BuyerCustomerParty             *CustomerPartyType      `xml:"cbc:BuyerCustomerParty,omitempty"`
@@ -116,8 +116,8 @@ type CodeType struct {
 }
 
 type DocumentReferenceType struct {
-	ID                  *IdentifierType1
-	IssueDate           *DateType
+	ID                  *IdentifierType1 `xml:"cbc:ID,omitempty"`
+	IssueDate           *DateType        `xml:"cbc:IssueDate,omitempty"`
 	DocumentTypeCode    *CodeType
 	DocumentType        *TextType
 	DocumentDescription []TextType
@@ -160,8 +160,8 @@ type PeriodType struct {
 }
 
 type MeasureType struct {
-	unitCode              string  `xml:"unitCode,attr,omitempty"`
-	unitCodeListVersionID string  `xml:"unitCodeListVersionID,attr,omitempty"`
+	UnitCode              string  `xml:"unitCode,attr,omitempty"`
+	UnitCodeListVersionID string  `xml:"unitCodeListVersionID,attr,omitempty"`
 	Value                 float64 `xml:",chardata"`
 }
 
@@ -179,10 +179,10 @@ type PartyType struct {
 	AgentParty                 *PartyType
 }
 type PartyIdentificationType struct {
-	ID IdentifierType1
+	ID *IdentifierType1
 }
 type PartyNameType struct {
-	Name TextType
+	Name *TextType
 }
 type AddressType struct {
 	ID                  *IdentifierType1
@@ -631,8 +631,8 @@ type SupplierPartyType struct {
 	Party *PartyType
 }
 type SignatureType struct {
-	ID                         *IdentifierType1
-	SignatoryParty             *PartyType
+	ID                         *IdentifierType1 `xml:"cbc:ID,omitempty"`
+	SignatoryParty             *PartyType       `xml:"cac:SignatoryParty,omitempty"`
 	DigitalSignatureAttachment *AttachmentType
 }
 type BillingReferenceLineType struct {

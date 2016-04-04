@@ -27,12 +27,12 @@ func InvoiceMap(V *InvoiceType) serialized.InvoiceType {
 	invoice2.LineCountNumeric = NumericTypeMap(V.LineCountNumeric)
 	invoice2.InvoicePeriod = PeriodTypeMap(V.InvoicePeriod)
 	invoice2.BillingReference = BillingReferenceTypeMapList(V.BillingReference)
-	//invoice2.DespatchDocumentReference = []DocumentReferenceTypeMap(V.DespatchDocumentReference)
-	//invoice2.ReceiptDocumentReference = []DocumentReferenceTypeMap(V.ReceiptDocumentReference)
-	//invoice2.OriginatorDocumentReference = []DocumentReferenceTypeMap(V.OriginatorDocumentReference)
-	//invoice2.ContractDocumentReference = []DocumentReferenceTypeMap(V.ContractDocumentReference)
-	//invoice2.AdditionalDocumentReference = []DocumentReferenceTypeMap(V.AdditionalDocumentReference)
-	//invoice2.Signature = []SignatureTypeMap(V.Signature)
+	invoice2.DespatchDocumentReference = DocumentReferenceTypeListMap(V.DespatchDocumentReference)
+	invoice2.ReceiptDocumentReference = DocumentReferenceTypeListMap(V.ReceiptDocumentReference)
+	invoice2.OriginatorDocumentReference = DocumentReferenceTypeListMap(V.OriginatorDocumentReference)
+	invoice2.ContractDocumentReference = DocumentReferenceTypeListMap(V.ContractDocumentReference)
+	invoice2.AdditionalDocumentReference = DocumentReferenceTypeListMap(V.AdditionalDocumentReference)
+	invoice2.Signature = SignatureTypeListMap(V.Signature)
 	//invoice2.AccountingSupplierParty = *SupplierPartyTypeMap(V.AccountingSupplierParty)
 	//invoice2.AccountingCustomerParty = *CustomerPartyTypeMap(V.AccountingCustomerParty)
 	//invoice2.BuyerCustomerParty = *CustomerPartyTypeMap(V.BuyerCustomerParty)
@@ -54,12 +54,174 @@ func InvoiceMap(V *InvoiceType) serialized.InvoiceType {
 	return invoice2
 }
 
+func SignatureTypeListMap(v []SignatureType) []serialized.SignatureType {
+	if v == nil {
+		return nil
+	}
+	var R []serialized.SignatureType
+
+	for i := range v {
+		R = append(R, *SignatureTypeMap(&v[i]))
+	}
+	return R
+}
+
+func SignatureTypeMap(v *SignatureType) *serialized.SignatureType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.SignatureType{}
+	R.ID = IdentifierType1Map(v.ID)
+	//TODO yapılacak
+	//R.DigitalSignatureAttachment = AttachmentTypeMap(v.DigitalSignatureAttachment)
+	R.SignatoryParty = PartyTypeMap(v.SignatoryParty)
+	return R
+}
+
+func PartyTypeMap(v *PartyType) *serialized.PartyType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.PartyType{}
+
+	R.WebsiteURI = IdentifierType1Map(v.WebsiteURI)
+	R.EndpointID = IdentifierType1Map(v.EndpointID)
+	R.IndustryClassificationCode = CodeTypeMap(v.IndustryClassificationCode)
+	R.PartyIdentification = PartyIdentificationTypeListMap(v.PartyIdentification)
+	R.PartyName = PartyNameTypeMap(v.PartyName)
+	R.PostalAddress = AddressTypeMap(v.PostalAddress)
+	//R.PartyTaxScheme            =PartyTaxSchemeTypeMap(v.PartyTaxScheme)
+	//R.PartyLegalEntity          =PartyLegalEntityTypeListMap(v.PartyLegalEntity)
+	//R.Contact                   =ContactTypeMap(v.Contact)
+	//R.Person                    =PersonTypeMap(v.Person)
+	//R.AgentParty                =PartyTypeMap(v.AgentParty)
+
+	return R
+}
+
+func AddressTypeMap(v *AddressType) *serialized.AddressType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.AddressType{}
+	R.ID = IdentifierType1Map(v.ID)
+	R.Postbox = TextTypeMap(v.Postbox)
+	R.Room = TextTypeMap(v.Room)
+	R.StreetName = TextTypeMap(v.StreetName)
+	R.BlockName = TextTypeMap(v.BlockName)
+	R.BuildingName = TextTypeMap(v.BuildingName)
+	R.BuildingNumber = TextTypeMap(v.BuildingNumber)
+	R.CitySubdivisionName = TextTypeMap(v.CitySubdivisionName)
+	R.CityName = TextTypeMap(v.CityName)
+	R.PostalZone = TextTypeMap(v.PostalZone)
+	R.Region = TextTypeMap(v.Region)
+	R.District = TextTypeMap(v.District)
+	R.Country = CountryTypeMap(v.Country)
+
+	return R
+}
+
+func CountryTypeMap(v *CountryType) *serialized.CountryType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.CountryType{}
+	R.IdentificationCode = CodeTypeMap(v.IdentificationCode)
+	R.Name = TextTypeMap(v.Name)
+
+	return R
+}
+
+func PartyNameTypeMap(v *PartyNameType) *serialized.PartyNameType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.PartyNameType{}
+	R.Name = TextTypeMap(v.Name)
+
+	return R
+}
+
+func PartyIdentificationTypeListMap(v []PartyIdentificationType) []serialized.PartyIdentificationType {
+	if v == nil {
+		return nil
+	}
+
+	var R []serialized.PartyIdentificationType
+
+	for i := range v {
+		R = append(R, *PartyIdentificationTypeMap(&v[i]))
+	}
+
+	return R
+}
+
+func PartyIdentificationTypeMap(v *PartyIdentificationType) *serialized.PartyIdentificationType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.PartyIdentificationType{}
+	R.ID = IdentifierType1Map(v.ID)
+	return R
+}
+
+func DocumentReferenceTypeListMap(v []DocumentReferenceType) []serialized.DocumentReferenceType {
+	if v == nil {
+		return nil
+	}
+	var R []serialized.DocumentReferenceType
+	for i := range v {
+		R = append(R, *DocumentReferenceTypeMap(&v[i]))
+	}
+	return R
+}
+
+func DocumentReferenceTypeMap(v *DocumentReferenceType) *serialized.DocumentReferenceType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.DocumentReferenceType{}
+	//TODO yapılacak
+	//R.Attachment = AttachmentTypeMap(v.Attachment)
+	//R.IssuerParty = PartyTypeMap(v.IssuerParty)
+
+	R.DocumentDescription = TextTypeListMap(v.DocumentDescription)
+	R.DocumentType = TextTypeMap(v.DocumentType)
+	R.DocumentTypeCode = CodeTypeMap(v.DocumentTypeCode)
+
+	R.ValidityPeriod = PeriodTypeMap(v.ValidityPeriod)
+	R.IssueDate = DateTypeMap(v.IssueDate)
+	R.ID = IdentifierType1Map(v.ID)
+
+	return R
+}
+
 func BillingReferenceTypeMapList(v []BillingReferenceType) []serialized.BillingReferenceType {
 	if v == nil {
 		return nil
 	}
-	//TODO map yapılacak
-	return nil
+
+	var R []serialized.BillingReferenceType
+
+	for i := range v {
+		R = append(R, *BillingReferenceTypeMap(&v[i]))
+	}
+
+	return R
+}
+
+func BillingReferenceTypeMap(v *BillingReferenceType) *serialized.BillingReferenceType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.BillingReferenceType{}
+	//TODO Map işlemi yapılacak
+
+	return R
 }
 
 func PeriodTypeMap(v *PeriodType) *serialized.PeriodType {
@@ -68,12 +230,23 @@ func PeriodTypeMap(v *PeriodType) *serialized.PeriodType {
 	}
 	R := &serialized.PeriodType{}
 	R.Description = TextTypeMap(v.Description)
-	//TODO DurationMeasure yapılmadı
-	//R.DurationMeasure = PeriodTypeMap(v.DurationMeasure)
+	R.DurationMeasure = MeasureTypeMap(v.DurationMeasure)
 	R.EndDate = DateTypeMap(v.EndDate)
 	R.EndTime = TimeTypeMap(v.EndTime)
 	R.StartDate = DateTypeMap(v.StartDate)
 	R.StartTime = TimeTypeMap(v.StartTime)
+
+	return R
+}
+
+func MeasureTypeMap(v *MeasureType) *serialized.MeasureType {
+	if v == nil {
+		return nil
+	}
+	R := &serialized.MeasureType{}
+	R.Value = v.Value
+	R.UnitCode = v.unitCode
+	R.UnitCodeListVersionID = v.unitCodeListVersionID
 
 	return R
 }
@@ -94,14 +267,10 @@ func TextTypeListMap(v []TextType) []serialized.TextType {
 		return nil
 	}
 
-	var j = len(v)
-
-	R := make([]serialized.TextType, j)
+	var R []serialized.TextType
 
 	for i := range v {
-		R[i].Value = v[i].Value
-		R[i].LanguageLocaleID = v[i].LanguageLocaleID
-		R[i].LanguageID = v[i].LanguageID
+		R = append(R, *TextTypeMap(&v[i]))
 	}
 
 	return R
