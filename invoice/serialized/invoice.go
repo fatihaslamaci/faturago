@@ -42,11 +42,11 @@ type InvoiceType struct {
 	ContractDocumentReference      []DocumentReferenceType `xml:"cbc:ContractDocumentReference,omitempty"`
 	AdditionalDocumentReference    []DocumentReferenceType `xml:"cbc:AdditionalDocumentReference,omitempty"`
 	Signature                      []SignatureType         `xml:"cac:Signature,omitempty"`
-	AccountingSupplierParty        *SupplierPartyType      `xml:"cbc:AccountingSupplierParty,omitempty"`
-	AccountingCustomerParty        *CustomerPartyType      `xml:"cbc:AccountingCustomerParty,omitempty"`
-	BuyerCustomerParty             *CustomerPartyType      `xml:"cbc:BuyerCustomerParty,omitempty"`
-	SellerSupplierParty            *SupplierPartyType      `xml:"cbc:SellerSupplierParty,omitempty"`
-	TaxRepresentativeParty         *PartyType              `xml:"cbc:TaxRepresentativeParty,omitempty"`
+	AccountingSupplierParty        *PartyType              `xml:"cbc:AccountingSupplierParty>cac:Party,omitempty"`
+	AccountingCustomerParty        *PartyType              `xml:"cbc:AccountingCustomerParty>cac:Party,omitempty"`
+	BuyerCustomerParty             *PartyType              `xml:"cbc:BuyerCustomerParty>cac:Party,omitempty"`
+	SellerSupplierParty            *PartyType              `xml:"cbc:SellerSupplierParty>cac:Party,omitempty"`
+	TaxRepresentativeParty         *PartyType              `xml:"cbc:TaxRepresentativeParty>cac:Party,omitempty"`
 	Delivery                       []DeliveryType          `xml:"cbc:Delivery,omitempty"`
 	PaymentMeans                   []PaymentMeansType      `xml:"cbc:PaymentMeans,omitempty"`
 	PaymentTerms                   *PaymentTermsType       `xml:"cbc:PaymentTerms,omitempty"`
@@ -134,7 +134,7 @@ type TextType struct {
 
 type AttachmentType struct {
 	EmbeddedDocumentBinaryObject *BinaryObjectType
-	ExternalReference            *ExternalReferenceType
+	ExternalReference            *ExternalReferenceType `xml:"cac:ExternalReference,omitempty"`
 }
 
 type BinaryObjectType struct {
@@ -148,7 +148,7 @@ type BinaryObjectType struct {
 }
 
 type ExternalReferenceType struct {
-	URI *IdentifierType1
+	URI *IdentifierType1 `xml:"cbc:URI,omitempty"`
 }
 type PeriodType struct {
 	StartDate       *DateType
@@ -166,12 +166,12 @@ type MeasureType struct {
 }
 
 type PartyType struct {
-	WebsiteURI                 *IdentifierType1
+	WebsiteURI                 *IdentifierType1 `xml:"cbc:WebsiteURI,omitempty"`
 	EndpointID                 *IdentifierType1
 	IndustryClassificationCode *CodeType
-	PartyIdentification        []PartyIdentificationType
+	PartyIdentification        []PartyIdentificationType `xml:"cac:PartyIdentification,omitempty"`
 	PartyName                  *PartyNameType
-	PostalAddress              *AddressType
+	PostalAddress              *AddressType `xml:"cac:PostalAddress,omitempty"`
 	PartyTaxScheme             *PartyTaxSchemeType
 	PartyLegalEntity           []PartyLegalEntityType
 	Contact                    *ContactType
@@ -179,7 +179,7 @@ type PartyType struct {
 	AgentParty                 *PartyType
 }
 type PartyIdentificationType struct {
-	ID *IdentifierType1
+	ID *IdentifierType1 `xml:"cbc:ID,omitempty"`
 }
 type PartyNameType struct {
 	Name *TextType
@@ -187,21 +187,21 @@ type PartyNameType struct {
 type AddressType struct {
 	ID                  *IdentifierType1
 	Postbox             *TextType
-	Room                *TextType
-	StreetName          *TextType
-	BlockName           *TextType
-	BuildingName        *TextType
-	BuildingNumber      *TextType
-	CitySubdivisionName *TextType
-	CityName            *TextType
-	PostalZone          *TextType
-	Region              *TextType
-	District            *TextType
-	Country             *CountryType
+	Room                *TextType    `xml:"cbc:Room,omitempty"`
+	StreetName          *TextType    `xml:"cbc:StreetName,omitempty"`
+	BlockName           *TextType    `xml:"cbc:BlockName,omitempty"`
+	BuildingName        *TextType    `xml:"cbc:BuildingName,omitempty"`
+	BuildingNumber      *TextType    `xml:"cbc:BuildingNumber,omitempty"`
+	CitySubdivisionName *TextType    `xml:"cbc:CitySubdivisionName,omitempty"`
+	CityName            *TextType    `xml:"cbc:CityName,omitempty"`
+	PostalZone          *TextType    `xml:"cbc:PostalZone,omitempty"`
+	Region              *TextType    `xml:"cbc:Region,omitempty"`
+	District            *TextType    `xml:"cbc:District,omitempty"`
+	Country             *CountryType `xml:"cac:Country,omitempty"`
 }
 type CountryType struct {
 	IdentificationCode *CodeType
-	Name               *TextType
+	Name               *TextType `xml:"cbc:Name,omitempty"`
 }
 type PartyTaxSchemeType struct {
 	TaxScheme *TaxSchemeType
@@ -624,16 +624,11 @@ type PaymentMeansType struct {
 	PayerFinancialAccount *FinancialAccountType
 	PayeeFinancialAccount *FinancialAccountType
 }
-type CustomerPartyType struct {
-	Party *PartyType
-}
-type SupplierPartyType struct {
-	Party *PartyType
-}
+
 type SignatureType struct {
 	ID                         *IdentifierType1 `xml:"cbc:ID,omitempty"`
 	SignatoryParty             *PartyType       `xml:"cac:SignatoryParty,omitempty"`
-	DigitalSignatureAttachment *AttachmentType
+	DigitalSignatureAttachment *AttachmentType  `xml:"cac:DigitalSignatureAttachment,omitempty"`
 }
 type BillingReferenceLineType struct {
 	ID              *IdentifierType1

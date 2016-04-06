@@ -33,11 +33,11 @@ func InvoiceMap(V *InvoiceType) serialized.InvoiceType {
 	invoice2.ContractDocumentReference = DocumentReferenceTypeListMap(V.ContractDocumentReference)
 	invoice2.AdditionalDocumentReference = DocumentReferenceTypeListMap(V.AdditionalDocumentReference)
 	invoice2.Signature = SignatureTypeListMap(V.Signature)
-	//invoice2.AccountingSupplierParty = *SupplierPartyTypeMap(V.AccountingSupplierParty)
-	//invoice2.AccountingCustomerParty = *CustomerPartyTypeMap(V.AccountingCustomerParty)
-	//invoice2.BuyerCustomerParty = *CustomerPartyTypeMap(V.BuyerCustomerParty)
-	//invoice2.SellerSupplierParty = *SupplierPartyTypeMap(V.SellerSupplierParty)
-	//invoice2.TaxRepresentativeParty = *PartyTypeMap(V.TaxRepresentativeParty)
+	invoice2.AccountingSupplierParty = PartyTypeMap(V.AccountingSupplierParty)
+	invoice2.AccountingCustomerParty = PartyTypeMap(V.AccountingCustomerParty)
+	invoice2.BuyerCustomerParty = PartyTypeMap(V.BuyerCustomerParty)
+	invoice2.SellerSupplierParty = PartyTypeMap(V.SellerSupplierParty)
+	invoice2.TaxRepresentativeParty = PartyTypeMap(V.TaxRepresentativeParty)
 	//invoice2.Delivery = []DeliveryTypeMap(V.Delivery)
 	//invoice2.PaymentMeans = []PaymentMeansTypeMap(V.PaymentMeans)
 	//invoice2.PaymentTerms = *PaymentTermsTypeMap(V.PaymentTerms)
@@ -73,9 +73,42 @@ func SignatureTypeMap(v *SignatureType) *serialized.SignatureType {
 
 	R := &serialized.SignatureType{}
 	R.ID = IdentifierType1Map(v.ID)
-	//TODO yapılacak
-	//R.DigitalSignatureAttachment = AttachmentTypeMap(v.DigitalSignatureAttachment)
+	R.DigitalSignatureAttachment = AttachmentTypeMap(v.DigitalSignatureAttachment)
 	R.SignatoryParty = PartyTypeMap(v.SignatoryParty)
+	return R
+}
+
+func AttachmentTypeMap(v *AttachmentType) *serialized.AttachmentType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.AttachmentType{}
+	R.EmbeddedDocumentBinaryObject = BinaryObjectTypeMap(v.EmbeddedDocumentBinaryObject)
+	R.ExternalReference = ExternalReferenceTypeMap(v.ExternalReference)
+
+	return R
+}
+
+func BinaryObjectTypeMap(v *BinaryObjectType) *serialized.BinaryObjectType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.BinaryObjectType{}
+	//TODO :Yapılacak
+
+	return R
+}
+
+func ExternalReferenceTypeMap(v *ExternalReferenceType) *serialized.ExternalReferenceType {
+	if v == nil {
+		return nil
+	}
+
+	R := &serialized.ExternalReferenceType{}
+	R.URI = IdentifierType1Map(v.URI)
+
 	return R
 }
 

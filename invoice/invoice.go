@@ -72,11 +72,11 @@ type InvoiceType struct {
 	ContractDocumentReference      []DocumentReferenceType
 	AdditionalDocumentReference    []DocumentReferenceType
 	Signature                      []SignatureType
-	AccountingSupplierParty        *SupplierPartyType
-	AccountingCustomerParty        *CustomerPartyType
-	BuyerCustomerParty             *CustomerPartyType
-	SellerSupplierParty            *SupplierPartyType
-	TaxRepresentativeParty         *PartyType
+	AccountingSupplierParty        *PartyType `xml:"AccountingSupplierParty>Party,omitempty"`
+	AccountingCustomerParty        *PartyType `xml:"AccountingCustomerParty>Party,omitempty"`
+	BuyerCustomerParty             *PartyType `xml:"BuyerCustomerParty>Party,omitempty"`
+	SellerSupplierParty            *PartyType `xml:"SellerSupplierParty>Party,omitempty"`
+	TaxRepresentativeParty         *PartyType `xml:"TaxRepresentativeParty>Party,omitempty"`
 	Delivery                       []DeliveryType
 	PaymentMeans                   []PaymentMeansType
 	PaymentTerms                   *PaymentTermsType
@@ -654,12 +654,7 @@ type PaymentMeansType struct {
 	PayerFinancialAccount *FinancialAccountType
 	PayeeFinancialAccount *FinancialAccountType
 }
-type CustomerPartyType struct {
-	Party *PartyType
-}
-type SupplierPartyType struct {
-	Party *PartyType
-}
+
 type SignatureType struct {
 	ID                         *IdentifierType1
 	SignatoryParty             *PartyType
